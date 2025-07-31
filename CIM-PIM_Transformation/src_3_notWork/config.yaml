@@ -1,0 +1,10 @@
+title: "Modèle de Gestion Académique"
+authors:
+  - name: "Dr. Alice"
+    affiliation: "Université X"
+  - name: "Pr. Bob"
+    affiliation: "Université Y"
+version: "2.3.0"
+custom_css: |
+  body { font-family: Arial; }
+  h1 { color: #2c3e50; }

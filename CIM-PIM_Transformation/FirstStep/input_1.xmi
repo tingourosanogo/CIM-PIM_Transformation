@@ -1,0 +1,16 @@
+<book>
+    <metadata>
+        <title>Mon Livre</title>
+        <author>Jane Doe</author>
+    </metadata>
+    <chapters>
+        <chapter id="1">
+            <title>Introduction</title>
+            <content>Ceci est le premier chapitre.</content>
+        </chapter>
+        <chapter id="2">
+            <title>Conclusion</title>
+            <content>Fin du document.</content>
+        </chapter>
+    </chapters>
+</book>

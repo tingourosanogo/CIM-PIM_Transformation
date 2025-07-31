@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" 
+           xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" 
+           xmi:id="_pastoralModel" name="PastoralModel">
+
+  <!-- Classes -->
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Human" name="Human">
+    <ownedAttribute xmi:id="attr_Human_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_Human_socialStatus" name="socialStatus" type="string"/>
+    <ownedAttribute xmi:id="attr_Human_type" name="type" type="string"/>
+    <ownedAttribute xmi:id="attr_Human_herdSize" name="herdSize" type="int"/>
+    <ownedAttribute xmi:id="attr_Human_mobilityStrategy" name="mobilityStrategy" type="string"/>
+    <ownedAttribute xmi:id="attr_Human_forageStock" name="forageStock" type="float"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Animal" name="Animal">
+    <ownedAttribute xmi:id="attr_Animal_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_Animal_species" name="species" type="string"/>
+    <ownedAttribute xmi:id="attr_Animal_healthStatus" name="healthStatus" type="string"/>
+    <ownedAttribute xmi:id="attr_Animal_age" name="age" type="int"/>
+    <ownedAttribute xmi:id="attr_Animal_dailyWaterNeed" name="dailyWaterNeed" type="float"/>
+    <ownedAttribute xmi:id="attr_Animal_dailyForageNeed" name="dailyForageNeed" type="float"/>
+    <ownedAttribute xmi:id="attr_Animal_position" name="position" type="string"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Plant" name="Plant">
+    <ownedAttribute xmi:id="attr_Plant_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_Plant_type" name="type" type="string"/>
+    <ownedAttribute xmi:id="attr_Plant_biomass" name="biomass" type="float"/>
+    <ownedAttribute xmi:id="attr_Plant_regrowthRate" name="regrowthRate" type="float"/>
+    <ownedAttribute xmi:id="attr_Plant_nutritionalValue" name="nutritionalValue" type="float"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Soil" name="Soil">
+    <ownedAttribute xmi:id="attr_Soil_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_Soil_soilType" name="soilType" type="string"/>
+    <ownedAttribute xmi:id="attr_Soil_fertility" name="fertility" type="float"/>
+    <ownedAttribute xmi:id="attr_Soil_compaction" name="compaction" type="float"/>
+    <ownedAttribute xmi:id="attr_Soil_infiltrationRate" name="infiltrationRate" type="float"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_WaterPoint" name="WaterPoint">
+    <ownedAttribute xmi:id="attr_WaterPoint_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_WaterPoint_type" name="type" type="string"/>
+    <ownedAttribute xmi:id="attr_WaterPoint_maxCapacity" name="maxCapacity" type="float"/>
+    <ownedAttribute xmi:id="attr_WaterPoint_currentLevel" name="currentLevel" type="float"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Climate" name="Climate">
+    <ownedAttribute xmi:id="attr_Climate_dailyRainfall" name="dailyRainfall" type="float"/>
+    <ownedAttribute xmi:id="attr_Climate_temperature" name="temperature" type="float"/>
+    <ownedAttribute xmi:id="attr_Climate_humidity" name="humidity" type="float"/>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Class" xmi:id="class_Zone" name="Zone">
+    <ownedAttribute xmi:id="attr_Zone_id" name="id" type="string"/>
+    <ownedAttribute xmi:id="attr_Zone_zoneType" name="zoneType" type="string"/>
+    <ownedAttribute xmi:id="attr_Zone_position" name="position" type="string"/>
+    <ownedAttribute xmi:id="attr_Zone_pressureState" name="pressureState" type="string"/>
+  </packagedElement>
+
+  <!-- Associations -->
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc_Human_Animal" name="owns">
+    <memberEnd xmi:idref="attr_Human_id"/>
+    <memberEnd xmi:idref="attr_Animal_id"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Human" type="class_Human" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Animal" type="class_Animal" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc_Animal_WaterPoint" name="drinksFrom">
+    <memberEnd xmi:idref="attr_Animal_id"/>
+    <memberEnd xmi:idref="attr_WaterPoint_id"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Animal" type="class_Animal" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_WaterPoint" type="class_WaterPoint" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+
+  <packagedElement xmi:type="uml:Association" xmi:id="assoc_Animal_Plant" name="grazes">
+    <memberEnd xmi:idref="attr_Animal_id"/>
+    <memberEnd xmi:idref="attr_Plant_id"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Animal" type="class_Animal" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Plant" type="class_Plant" aggregation="none">
+      <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

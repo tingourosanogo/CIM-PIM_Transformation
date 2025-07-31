@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_e9BnEL4ZEe-kfuuh-Rg8Tg" name="GestionDiplome">
+	
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Etudiant" name="Etudiant">
+      <ownedAttribute xmi:id="attr_id_etudiant" name="id_etudiant" type="string"/>
+      <ownedAttribute xmi:id="attr_nom" name="nom" type="string"/>
+      <ownedAttribute xmi:id="attr_prenom" name="prenom" type="string"/>
+      <ownedAttribute xmi:id="attr_date_naissance" name="date_naissance" type="Date"/>
+      <ownedAttribute xmi:id="attr_email" name="email" type="string"/>
+      <ownedAttribute xmi:id="attr_telephone" name="telephone" type="string"/>
+      <ownedOperation xmi:id="op_consulterNotes" name="consulterNotes"/>
+      <ownedOperation xmi:id="op_demanderAttestation" name="demanderAttestation"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Filiere" name="Filiere">
+      <ownedAttribute xmi:id="attr_id_filiere" name="id_filiere" type="string"/>
+      <ownedAttribute xmi:id="attr_nom_filiere" name="nom_filiere" type="string"/>
+      <ownedAttribute xmi:id="attr_description" name="description" type="string"/>
+      <ownedOperation xmi:id="op_ajouterFiliere" name="ajouterFiliere"/>
+      <ownedOperation xmi:id="op_modifierFiliere" name="modifierFiliere"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Option" name="Option">
+      <ownedAttribute xmi:id="attr_id_option" name="id_option" type="string"/>
+      <ownedAttribute xmi:id="attr_nom_option" name="nom_option" type="string"/>
+      <ownedAttribute xmi:id="attr_description" name="description" type="string"/>
+      <ownedOperation xmi:id="op_ajouterOption" name="ajouterOption"/>
+      <ownedOperation xmi:id="op_modifierOption" name="modifierOption"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Cours" name="Cours">
+      <ownedAttribute xmi:id="attr_id_cours" name="id_cours" type="string"/>
+      <ownedAttribute xmi:id="attr_nom_cours" name="nom_cours" type="string"/>
+      <ownedAttribute xmi:id="attr_credits" name="credits" type="Integer"/>
+      <ownedAttribute xmi:id="attr_description" name="description" type="string"/>
+      <ownedOperation xmi:id="op_ajouterCours" name="ajouterCours"/>
+      <ownedOperation xmi:id="op_modifierCours" name="modifierCours"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Enseignant" name="Enseignant">
+      <ownedAttribute xmi:id="attr_id_enseignant" name="id_enseignant" type="string"/>
+      <ownedAttribute xmi:id="attr_nom" name="nom" type="string"/>
+      <ownedAttribute xmi:id="attr_prenom" name="prenom" type="string"/>
+      <ownedAttribute xmi:id="attr_email" name="email" type="string"/>
+      <ownedOperation xmi:id="op_attribuerNotes" name="attribuerNotes"/>
+      <ownedOperation xmi:id="op_consulterNotes" name="consulterNotes"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Note" name="Note">
+      <ownedAttribute xmi:id="attr_id_note" name="id_note" type="string"/>
+      <ownedAttribute xmi:id="attr_valeur" name="valeur" type="Float"/>
+      <ownedAttribute xmi:id="attr_date_saisie" name="date_saisie" type="Date"/>
+      <ownedOperation xmi:id="op_modifierNote" name="modifierNote"/>
+      <ownedOperation xmi:id="op_supprimerNote" name="supprimerNote"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="class_Semestre" name="Semestre">
+      <ownedAttribute xmi:id="attr_id_semestre" name="id_semestre" type="string"/>
+      <ownedAttribute xmi:id="attr_nom" name="nom" type="string"/>
+      <ownedAttribute xmi:id="attr_annee_academique" name="annee_academique" type="string"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Etudiant_Filiere" name="Appartient">
+      <memberEnd xmi:idref="attr_id_etudiant"/>
+      <memberEnd xmi:idref="attr_id_filiere"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Etudiant" type="class_Etudiant" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Filiere" type="class_Filiere" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Filiere_Option" name="Propose">
+      <memberEnd xmi:idref="attr_id_filiere"/>
+      <memberEnd xmi:idref="attr_id_option"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Filiere" type="class_Filiere" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Option" type="class_Option" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Option_Cours" name="Inclut">
+      <memberEnd xmi:idref="attr_id_option"/>
+      <memberEnd xmi:idref="attr_id_cours"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Option" type="class_Option" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Cours" type="class_Cours" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Cours_Enseignant" name="Enseigne">
+      <memberEnd xmi:idref="attr_id_cours"/>
+      <memberEnd xmi:idref="attr_id_enseignant"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Cours" type="class_Cours" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Enseignant" type="class_Enseignant" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Etudiant_Note" name="Reçoit">
+      <memberEnd xmi:idref="attr_id_etudiant"/>
+      <memberEnd xmi:idref="attr_id_note"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Etudiant" type="class_Etudiant" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Note" type="class_Note" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_Cours_Note" name="Contient">
+      <memberEnd xmi:idref="attr_id_cours"/>
+      <memberEnd xmi:idref="attr_id_note"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Cours" type="class_Cours" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="ownedEnd_Note" type="class_Note" aggregation="none">
+        <lowerValue xmi:type="uml:LiteralInteger" value="0"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+  </uml:Model>

@@ -1,0 +1,2 @@
+﻿test = "éèàç"
+print(test) 

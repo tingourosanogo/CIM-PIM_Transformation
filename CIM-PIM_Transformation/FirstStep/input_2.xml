@@ -1,0 +1,38 @@
+<document>
+	<metadata>
+		<title>Guide des Transformations XML</title>
+		<author>Équipe Data</author>
+		<date>2024-05-20</date>
+		<tags>
+			<tag>XML</tag>
+			<tag>Markdown</tag>
+			<tag>Python</tag>
+		</tags>
+	</metadata>
+	<content>
+		<section id="intro">
+			<title>Introduction</title>
+			<paragraph>
+				Ceci est un <bold>exemple avancé</bold> avec des <italic>balises imbriquées</italic>.
+				Voici un <link url="https://example.com">lien utile</link>.
+			</paragraph>
+			<list type="unordered">
+				<item>Premier point</item>
+				<item>
+					Second point avec <bold>texte important</bold>
+				</item>
+			</list>
+		</section>
+		<section id="steps">
+			<title>Étapes de Conversion</title>
+			<paragraph>
+				Utilisez <code>lxml</code> pour parser le XML.
+			</paragraph>
+			<list type="ordered">
+				<item>Charger le fichier</item>
+				<item>Extraire les balises</item>
+				<item>Générer le Markdown</item>
+			</list>
+		</section>
+	</content>
+</document>

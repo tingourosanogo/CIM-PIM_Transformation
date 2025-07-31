@@ -1,0 +1,62 @@
+<document>
+	<metadata>
+		<title>Document Scientifique Complexe</title>
+		<author>Dr. Alice</author>
+		<date>2024-05-21</date>
+	</metadata>
+	<content>
+		<section id="abstract">
+			<title>Résumé</title>
+			<paragraph>
+				Ce document montre des <bold>fonctionnalités avancées</bold> :
+				<inline-math>E = mc^2</inline-math>, des <code>snippets Python</code>, et des tableaux.
+			</paragraph>
+		</section>
+
+		<section id="figures">
+			<title>Figures</title>
+			<figure>
+				<image src="plot.png" alt="Courbe de données"/>
+				<caption>Figure 1 : Résultats expérimentaux</caption>
+			</figure>
+		</section>
+
+		<section id="table">
+			<title>Tableaux</title>
+			<table>
+				<header>
+					<column>Variable</column>
+					<column>Description</column>
+				</header>
+				<row>
+					<cell>
+						<math>x</math>
+					</cell>
+					<cell>Variable indépendante</cell>
+				</row>
+				<row>
+					<cell>
+						<math>y</math>
+					</cell>
+					<cell>Variable dépendante</cell>
+				</row>
+			</table>
+		</section>
+
+		<section id="code">
+			<title>Exemple de Code</title>
+			<code-block lang="python">
+				def hello():
+				print("Markdown avec XML!")
+			</code-block>
+		</section>
+
+		<section id="math">
+			<title>Équations</title>
+			<paragraph>
+				Équation importante :
+				<block-math>\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}</block-math>
+			</paragraph>
+		</section>
+	</content>
+</document>

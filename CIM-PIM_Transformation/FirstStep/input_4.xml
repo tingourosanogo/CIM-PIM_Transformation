@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<metadata>
+		<title>
+			<en>Advanced Document</en>
+			<fr>Document Avancé</fr>
+		</title>
+		<author>Dr. Alice</author>
+		<date>2024-05-22</date>
+	</metadata>
+	<content>
+		<section id="intro">
+			<title>
+				<en>Introduction</en>
+				<fr>Introduction</fr>
+			</title>
+			<paragraph>
+				<en>
+					This is a <bold>multilingual</bold> document with citations <cite key="ref1"/>.
+				</en>
+				<fr>
+					Ceci est un document <bold>multilingue</bold> avec citations <cite key="ref1"/>.
+				</fr>
+			</paragraph>
+		</section>
+
+		<section id="diagram">
+			<title>
+				<en>Diagram</en>
+				<fr>Diagramme</fr>
+			</title>
+			<mermaid>
+				<en>
+					graph TD
+					A[Start] --> B[Process]
+					B --> C{Decision}
+					C -->|Yes| D[End]
+					C -->|No| B
+				</en>
+				<fr>
+					graph TD
+					A[Début] --> B[Traitement]
+					B --> C{Décision}
+					C -->|Oui| D[Fin]
+					C -->|Non| B
+				</fr>
+			</mermaid>
+		</section>
+
+		<section id="bibliography">
+			<title>
+				<en>References</en>
+				<fr>Références</fr>
+			</title>
+			<biblio>
+				<entry key="ref1">
+					<en>Author, A. (2023). Title. Journal.</en>
+					<fr>Auteur, A. (2023). Titre. Journal.</fr>
+				</entry>
+			</biblio>
+		</section>
+	</content>
+</document>
