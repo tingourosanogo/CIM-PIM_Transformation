@@ -6,8 +6,10 @@
     "\\CIM-PIM_Transformation\\project_root\\src",
     "\\CIM-PIM_Transformation\\project_root\\src\\output",
     "\\CIM-PIM_Transformation\\project_root\\src\\parsers",
-    "\\CIM-PIM_Transformation\\project_root\\src\\sections"
+    "\\CIM-PIM_Transformation\\project_root\\src\\sections",
+    "\\CIM-PIM_Transformation\\src_3_notWork",
+    "\\CIM-PIM_Transformation\\src_3_notWork\\sections"
   ],
-  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\output\\docs.md",
+  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\sections\\metrics.py",
   "PreviewInSolutionExplorer": false
 }
