@@ -23,7 +23,7 @@ class DocumentationBuilder:
             
             # 2. Parsing
             data = parser.parse_to_structure()
-            logger.debug("Données parsées: %s", data)
+            logger.debug("Données parsées: %s", data) # afficher les données parsées au console
             
             # 3. Validation données
             if not data or not isinstance(data.get('entities'), list):

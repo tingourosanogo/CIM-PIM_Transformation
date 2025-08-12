@@ -16,7 +16,7 @@ def main():
         logger.info("Début de la génération...")
         
         # 1. Vérification du fichier d'entrée
-        input_path = Path("project_root/src/input/modele_conceptuel.xmi")
+        input_path = Path("C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/modele_conceptuel.xmi") 
         if not input_path.exists():
             raise FileNotFoundError(f"Fichier XMI introuvable: {input_path}")
         logger.info(f"Fichier d'entrée trouvé: {input_path}") # Les messages affichés à virer après le travail 
@@ -37,7 +37,7 @@ def main():
         logger.info("Génération Markdown terminée") # Les messages affichés à virer après le travail 
 
         # 5. Écriture
-        output_path = Path("project_root/src/output/docs.md")
+        output_path = Path("C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/output/docs2.md")
         output_path.parent.mkdir(exist_ok=True)
         output_path.write_text(markdown, encoding="utf-8")
         logger.info(f"Documentation sauvegardée dans: {output_path}") # Les messages affichés à virer après le travail 

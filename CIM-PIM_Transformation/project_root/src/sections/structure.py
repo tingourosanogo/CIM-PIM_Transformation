@@ -107,16 +107,16 @@ class StructureSection(BaseSection):
         content = ["### Attributs"]
         
         # Tableau guide systématique pour chaque catégorie
-        content.append("\n**Attributs partagés (fixes)** \n\n Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :")
+        content.append("\n**Attributs partagés (fixes)** \n\n Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation : \n")
         content.append(self._build_attributes_table(shared_fixed))
         
-        content.append("\n**Variables partagées** \n\n Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :")
+        content.append("\n**Variables partagées** \n\n Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation : \n")
         content.append(self._build_attributes_table(shared_var))
         
-        content.append("\n**Attributs individuels** \n\n Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :")
+        content.append("\n**Attributs individuels** \n\n Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation : \n")
         content.append(self._build_attributes_table(individual_var))
         
-        content.append("\n**Variables individuelles (fixes)**\n\n Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :")
+        content.append("\n**Variables individuelles (fixes)**\n\n Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation : \n")
         content.append(self._build_attributes_table(individual_fixed))
 
         return "\n".join(content)
@@ -124,11 +124,14 @@ class StructureSection(BaseSection):
     ####_________Fonction qui contruit les tableaux_________####
     def _build_attributes_table(self, attributes: List[Dict]) -> str:
         """Génère une table Markdown avec ligne guide si vide"""
-        headers = "| **Paramètre** | **Commentaire** | **Unité** |\n|---------------|-----------------|-----------|"
-        
-        if not attributes:
-            return f"{headers}\n{self.GUIDE_ROW}"
-        
+      
+        headers = ["Paramètre", "Commentaire", "Unité"]
+    
+        # En-tête du tableau
+        header_row = f"| {' | '.join(f'**{h}**' for h in headers)} |"
+        separator = f"| {' | '.join(['---'] * len(headers))} |"
+    
+        # Lignes de données
         rows = []
         for attr in attributes:
             rows.append(
@@ -136,8 +139,12 @@ class StructureSection(BaseSection):
                 f"{attr.get('description', self.MISSING_DATA)} | "
                 f"{attr.get('type', self.MISSING_DATA)} |"
             )
-        
-        return f"{headers}\n" + "\n".join(rows)
+    
+        # Si pas de données, ajouter une ligne vide
+        if not rows:
+            rows.append(f"| {' | '.join(['...'] * len(headers))} |")
+    
+        return "\n".join([header_row, separator] + rows)
 
     #####______________Questions ouvertes_________________####
     def _build_questions_section(self, entity: Dict) -> Optional[str]:
@@ -213,7 +220,7 @@ class StructureSection(BaseSection):
         output_vars = process.get('output_attrs', [])
         depended_params = process.get('depended_parameters', [])
     
-        content = ["##### Attributs"]
+        content = ["\n##### Attributs"]
     
         # Section Variables d'entrée
         content.append("\nLe processus dépend des variables suivantes :\n")
@@ -273,21 +280,21 @@ class StructureSection(BaseSection):
     def _build_behavior_subsection(self, process: Dict) -> str:
         """Sous-section comportement avec fallbacks"""
         try:
-            content = ["##### Comportement"]
+            content = ["\n##### Comportement"]
 
             content.append("\n*Description détaillée du processus avec, éventuellement des sous-processus, des équations, des diagrammes d’état ou d’activité (UML), etc.*\n")
             
             equation = process.get('governing_equation')
             if equation and str(equation).strip():
-                content.append(f"\n**- Équation** : \n`{equation}`")
+                content.append(f"\n###### Équation : \n`{equation}`")
             else:
-                content.append(f"**- Équation** : {self.MISSING_DATA_MESSAGE} \n")
+                content.append(f"\n###### Équation : {self.MISSING_DATA_MESSAGE} \n")
 
             diagram = process.get('dynamics_diagram')
             if not diagram or not str(diagram).strip():
-                content.append(f"**- Diagramme** : {self.MISSING_DATA_MESSAGE}")
+                content.append(f"\n###### Diagramme : {self.MISSING_DATA_MESSAGE}")
             else: 
-                content.append(f"""**- Diagramme** :
+                content.append(f"""\n###### Diagramme :
 ```mermaid
 {textwrap.dedent(diagram).strip()}
 ```""")
