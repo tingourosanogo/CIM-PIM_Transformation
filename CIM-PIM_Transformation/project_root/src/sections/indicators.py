@@ -61,7 +61,7 @@ class IndicatorsSection(BaseSection):
         var = indicator.get('variables', [])
         params = indicator.get('parameters', [])
         sections = [
-            f"\n### Indicateur {indicator['id']} : {indicator['name']}",
+            f"\n### Indicateur {indicator['id']} : {indicator['name']} ({indicator['unit']})",
             self._generate_description(indicator)
         ]
         sections.append(self._generate_formula(indicator))
