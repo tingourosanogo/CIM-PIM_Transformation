@@ -31,8 +31,7 @@ class DocumentationBuilder:
             
             # 4. Génération
             section = StructureSection(
-                data=data,
-                config=self.config.structure.__dict__
+                data=data
             )
             content = section.generate()
             

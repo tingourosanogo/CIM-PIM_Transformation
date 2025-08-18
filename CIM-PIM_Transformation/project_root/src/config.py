@@ -12,4 +12,4 @@ class DocConfig:
         group_by_type: bool = True
         skip_empty: bool = True
 
-    structure: StructureConfig = StructureConfig()
+    

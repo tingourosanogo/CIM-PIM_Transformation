@@ -833,3 +833,79 @@ et dépend des paramètres suivants :
 ### Dynamiques
 
 *Section vide : à compléter manuellement*
+
+# Indicateurs
+
+## Environnemental
+
+
+### Indicateur CA.01.01 : Tendance d'évolution de la pluviométrie
+
+
+#### Description 
+
+Analyse l'évolution de la pluviométrie dans le territoire. Indicateur de caractérisation de la vulnérabilité climatique. Valeurs négatives = baisse, positives = hausse.
+
+
+
+#### Calcul 
+
+```math
+CA.01.01 = a * CA.01.01 + (pluviométrie - pluviométrie-1)
+```
+
+
+#### Attributs 
+
+
+
+L’indicateur dépend des variables suivantes : 
+
+ | **variables** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| pluviométrie | Climat | La quantité de pluie annuelle cette année |mm/an |
+| pluviométrie-1 | Climat | La quantité de pluie annuelle l'année précédente (n-1) |mm/an |
+
+
+
+Et dépend des paramètres suivants 
+
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| a | Climat | Facteur d'amortissement du passé |sans |
+## Démographique
+
+
+### Indicateur CA.02.01 : Taux de croissance annuelle de la population
+
+
+#### Description 
+
+Croissance démographique dans les terroirs sur 30 ans. Indicateur de pression anthropique (2,6% aux derniers calculs).
+
+
+
+#### Calcul 
+
+```math
+Donnée directe (pas de calcul)
+```
+
+
+#### Attributs 
+
+
+
+L’indicateur dépend des variables suivantes : 
+
+ | **variables** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| ... | ... | ... | ... |
+
+
+
+Et dépend des paramètres suivants 
+
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| taux-croissance | ActeurIndividuel | Taux de croissance démographique du foyer |% |

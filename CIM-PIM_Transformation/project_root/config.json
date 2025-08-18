@@ -1,0 +1,9 @@
+{
+    "title":"Documentation Technique",
+    "authors":[{"name": "Équipe", "affiliation": "Société"}],
+    "xmi_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/modele_conceptuel.xmi",
+    "indicators_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.yml",
+    "indicatorsJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.json",
+    "indicators_format": "yaml",
+    "output_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/output/docs2.md"
+}
