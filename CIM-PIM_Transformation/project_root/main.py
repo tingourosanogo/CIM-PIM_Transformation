@@ -5,8 +5,11 @@ import json
 from pathlib import Path
 from src.sections.structure import StructureSection
 from src.sections.indicators import IndicatorsSection
+from src.sections.initialization import InitializationSection
 from src.parsers.yaml_to_json import yaml_to_json
 from src.parsers.csv_to_json import csv_to_json
+from src.loader.indicator_loader import IndicatorLoader
+from src.loader.initialization_loader import InitializationLoader
 from src.parsers.uml_parser import UMLParser
 from src.doc_builder import DocumentationBuilder
 from src.config import DocConfig
@@ -47,6 +50,7 @@ def main():
         # 1. Vérification des fichiers d'entrée
         StructureData_path = Path(config['xmi_path'])
         IndicatorsData_path = Path(config['indicators_path'])
+        InitializationData_path = Path(config['initialization_path'])
         
        
         if not StructureData_path.exists():
@@ -57,6 +61,10 @@ def main():
             raise FileNotFoundError(f"Fichier Indicateur introuvable: {IndicatorsData_path}")
         logger.info(f"Fichier d'entrée trouvé: {IndicatorsData_path}") # Les messages affichés à virer après le travail 
 
+        if not InitializationData_path.exists():
+            raise FileNotFoundError(f"Fichier Initialisation introuvable: {InitializationData_path}")
+        logger.info(f"Fichier d'entrée trouvé: {InitializationData_path}") # Les messages affichés à virer après le travail 
+
 
         # 2. Parsing des données
         ## Section Structure (XMI)
@@ -65,15 +73,38 @@ def main():
         #structure_data = builder.build(xmi_parser)
         
 
-        # Section Indicateurs (YAML/CSV)
+        ## Section Indicateurs (YAML/CSV)
         indicatorsJson_path = Path(config['indicatorsJson_path'])
-        if config['indicators_format'] == 'yaml':
-            yaml_to_json(IndicatorsData_path, indicatorsJson_path)
-        else:
-            csv_to_json(IndicatorsData_path, indicatorsJson_path)
-        
+        indicators_format_delimitor = config['indicators_format']
+        indicators_format = indicators_format_delimitor['format']
+        delimitor = indicators_format_delimitor['delimitor']
+        Indicator_loader = IndicatorLoader()
+        indicators_data = Indicator_loader.load_indicator_data(input_path=IndicatorsData_path, output_path=indicatorsJson_path, input_format=indicators_format, delimitor=delimitor)
+
         with open(indicatorsJson_path, mode='r', encoding='utf-8') as f:
             indicators_data = json.load(f)
+
+        ## Section Indicateurs (YAML/CSV)
+        initializationJson_path = Path(config['initializationJson_path'])
+        initialization_format_delimitor = config['initialization_format']
+        initialization_format = initialization_format_delimitor['format']
+        separator = initialization_format_delimitor['delimitor']
+        initialization_loader = InitializationLoader()
+        initialization_data = initialization_loader.load_initialization_data(input_path=InitializationData_path, output_path=initializationJson_path, input_format=initialization_format, delimitor=separator)
+        
+        with open(initializationJson_path, mode='r', encoding='utf-8') as f:
+            initialization_data = json.load(f)
+
+        '''
+        if indicators_format ['format'] == 'yaml':
+            yaml_to_json(IndicatorsData_path, indicatorsJson_path)
+        elif indicators_format ['format'] == 'csv':
+            delimitor = indicators_format.get('delimitor', ';')
+            csv_to_json('indicators', IndicatorsData_path, indicatorsJson_path, delimitor)
+        else:
+            raise ValueError(f"Format d'indicateurs non supporté: {indicators_format['format']}")
+        '''
+        
             
         logger.debug("Données indicateur parsées: %s", indicators_data) # afficher les données parsées au console
         logger.info("Parsing XMI réussi") # Les messages affichés à virer après le travail 
@@ -81,9 +112,11 @@ def main():
         # 3. Génération des sections
         structureSect = builder.build(xmi_parser)
         indicatorsSect = IndicatorsSection(indicators_data).generate()
+        initializationSect = InitializationSection(initialization_data).generate()
         sections = [
             structureSect,
-            indicatorsSect
+            indicatorsSect,
+            initializationSect
         ]
         logger.info("Génération Markdown terminée") # Les messages affichés à virer après le travail 
 

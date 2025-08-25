@@ -5,9 +5,9 @@
     "\\CIM-PIM_Transformation\\project_root",
     "\\CIM-PIM_Transformation\\project_root\\src",
     "\\CIM-PIM_Transformation\\project_root\\src\\input",
-    "\\CIM-PIM_Transformation\\project_root\\src\\output",
+    "\\CIM-PIM_Transformation\\project_root\\src\\loader",
     "\\CIM-PIM_Transformation\\project_root\\src\\sections"
   ],
-  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\input\\indicators.yml",
+  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\sections\\initialization.py",
   "PreviewInSolutionExplorer": false
 }

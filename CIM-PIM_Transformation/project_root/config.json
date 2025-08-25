@@ -4,6 +4,9 @@
     "xmi_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/modele_conceptuel.xmi",
     "indicators_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.yml",
     "indicatorsJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.json",
-    "indicators_format": "yaml",
+    "indicators_format": {"format": "yaml", "delimitor": ";"},
+    "initialization_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization.yml",
+    "initializationJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization.json",
+    "initialization_format": {"format": "yaml", "delimitor": ";"},
     "output_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/output/docs2.md"
 }
