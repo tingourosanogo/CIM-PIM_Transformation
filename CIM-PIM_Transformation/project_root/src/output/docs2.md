@@ -1719,23 +1719,10 @@ Et dépend des paramètres suivants
 ## Initialisation
 
 ### Portée Temporelle
-Configuration de la dimension temporelle de la simulation :
+*Configuration temporelle à compléter.*
 
-| **Paramètre** | **Valeur** | **Description** |
-| --- | --- | --- |
-| Date de début | `2020-01-01` | Date initiale de la simulation |
-| Date de fin | `2030-12-31` | Date finale de la simulation |
-| Pas de temps | `1 day` | Incrément temporel de simulation |
-| Période de chauffe | `365 days` | Période d'initialisation avant collecte des données |
-
-### Configuration Spatiale
-Configuration de la dimension spatiale de la simulation :
-
-| **Paramètre** | **Valeur** | **Description** |
-| --- | --- | --- |
-| Extension | `[min_x, min_y, max_x, max_y]` | Bounding box de la zone d'étude |
-| Projection | `EPSG:4326` | Système de coordonnées de référence |
-| Résolution | `100 m` | Résolution spatiale des données |
+### Configuration Spatiale  
+*Configuration spatiale à compléter.*
 
 ## Données d'Entrée
 
@@ -1750,13 +1737,13 @@ Cette section recense l'ensemble des données d'entrée nécessaires au fonction
 | **Type** | **Format** | **Chemin** | **Description** | **Résolution** | **Qualité** |
 | --- | --- | --- | --- | --- | --- |
 | raster | GeoTIFF | `data/land_use.tif` | CORINE Land Cover 2020 | 100m | low |
-| vector | GeoJSON | `data/parcels.geojson` | Agricultural parcel boundaries | ... | high |
+| vector | GeoJSON | `data/parcels.geojson` | Agricultural parcel boundaries | None | high |
 
 ### Données Tabulaires
 
 | **Type** | **Format** | **Chemin** | **Description** | **Taille** | **Taux Réponse** | **Validation** |
 | --- | --- | --- | --- | --- | --- | --- |
-| csv | ... | `data/household_survey.csv` | Socio-economic survey 2020 | 1500 | 78%% | cross_validation |
+| csv | csv | `data/household_survey.csv` | Socio-economic survey 2020 | 1500 | 78%% | cross_validation |
 
 ## Entités
 
@@ -1814,7 +1801,7 @@ Paramètres dont la valeur est constante pour toutes les simulations :
 | **Paramètre** | **Entité** | **Définition** | **Unité** | **Valeur** | **Incertitude** | **Sensibilité** |
 | --- | --- | --- | --- | --- | --- | --- |
 | `discount_rate` | HouseholdAgent | Temporal discount rate for decision-making | dimensionless | **0.03** | Dist: normal, σ: 0.005 | high |
-| `soil_mineralization_rate` | ParcelEntity | Rate of organic matter mineralization | kgN/kgOM/day | **0.15** | Non quantifié | ... |
+| `soil_mineralization_rate` | ParcelEntity | Rate of organic matter mineralization | kgN/kgOM/day | **0.15** | Non quantifié | None |
 
 ### Paramètres Variables (X)
 Paramètres à explorer dans les scénarios :
@@ -1822,7 +1809,7 @@ Paramètres à explorer dans les scénarios :
 | **Paramètre** | **Entité** | **Définition** | **Unité** | **Valeurs** | **Impact** |
 | --- | --- | --- | --- | --- | --- |
 | `climate_change_scenario` | Global | IPCC climate scenarios | ... | **RCP2.6, RCP4.5, RCP8.5** | high |
-| `policy_intervention` | Global | Policy intervention scenarios | ... | **baseline, subsidy, tax, regulation** | ... |
+| `policy_intervention` | Global | Policy intervention scenarios | ... | **baseline, subsidy, tax, regulation** | None |
 
 ## Variables d'État Initiales
 
@@ -1877,7 +1864,7 @@ Un scénario est défini par l'attribution de valeurs à un sous-ensemble X des 
 
 **Description** : Current trends continuation
 
-**Base** : Non spécifié
+**Base** : None
 
 **Statut de validation** : calibrated
 
@@ -1901,7 +1888,7 @@ Les règles d'initialisation définissent comment les valeurs initiales sont att
 | **Entité** | **Règle** | **Implémentation** | **Hypothèses** |
 | --- | --- | --- | --- |
 | **HouseholdAgent** | `wealth ~ lognormal(10.82, 0.8)` | `numpy.random.lognormal(10.82, 0.8, n_agents)` | `Wealth distribution follows national statistics` |
-| **ParcelEntity** | `land_use = categorical([0.3, 0.4, 0.2, 0.1])` | `random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0.1])` | `...` |
+| **ParcelEntity** | `land_use = categorical([0.3, 0.4, 0.2, 0.1])` | `random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0.1])` | `None` |
 
 ### Détails par Règle
 
@@ -1932,3 +1919,95 @@ random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0
 ```
 
 **Hypothèses** : *Aucune hypothèse spécifiée*
+
+# Mode d'emploi
+
+## Lancement de la simulation
+
+### Configuration requise
+
+| | |
+| - | - |
+| **Système d'exploitation** | Windows 10/11, Linux Ubuntu 20.04+, macOS 12+ |
+| **Mémoire RAM** | 16GB recommandés (8GB minimum) |
+| **Espace disque** | 2GB libre (données spatiales incluses) |
+| **Dépendances** | GAMA Platform 1.9.1+, Java 17+, GDAL 3.4+ (pour données géospatiales), Python 3.10+ (pour analyse post-simulation) |
+
+### Fichiers nécessaires
+
+| **Fichier** | **Description** | **Format** | **Exemple** |
+| - | - | - | - |
+| `main_model.gaml` | Modèle principal GAMA contenant les espèces et expériences | GAML | `models/pastoral_abm/main_model.gaml` |
+| `config_parameters.xml` | Fichier de paramétrage de la simulation | XML | `N/A` |
+| `land_cover.tiff` | Carte d'occupation du sol (classification FAO LCCS) | GeoTIFF | `N/A` |
+| `herd_data.csv` | Données initiales des troupeaux par ménage | CSV UTF-8 | `N/A` |
+
+### Procédure de lancement
+
+**Étape 1** : Lancement en mode headless (sans interface)
+```bash
+gama-headless.exe main_model.gaml config_parameters.xml
+```
+**Options disponibles** :
+- --experiment main_experiment : exécute l'expérience principale
+- --output results/ : spécifie le dossier de sortie
+- --params param1=value1 param2=value2 : paramètres en ligne de commande
+
+**Étape 2** : Lancement avec interface graphique GAMA
+```bash
+gama.exe main_model.gaml
+```
+**Prérequis** : Environnement graphique disponible
+
+**Étape 3** : Lancement batch de multiples scénarios
+```bash
+python run_batch.py --scenarios all --replicates 10
+```
+**Prérequis** : Script Python d'orchestration installé
+
+## Les entrées
+
+### Interface utilisateur
+
+| | |
+| - | - |
+| **Type** | GAMA Modeling Environment |
+| **URL** | `https://gama-platform.org` |
+| **Fonctionnalités** | Exploration visuelle des scénarios climatiques (X), Modification interactive des paramètres (Z) : taux de reproduction, règles de mobilité, Visualisation temps réel de la dynamique pastorale, Inspection des agents (troupeaux, ménages, ressources) |
+
+### Fichiers d'entrée
+
+| **Type** | **Description** | **Format** | **Détails** |
+| - | - | - | - |
+| parametres_globaux | Paramètres globaux du modèle socio-écologique | XML | Champs obligatoires: simulation_duration: 3650 (10 ans), time_step: 1 (jour), climate_scenario: RCP4.5|RCP8.5, market_access_level: low|medium|high; Schéma: schemas/parameters_schema.xsd |
+| donnees_spatiales | *Information à compléter* | GeoTIFF/Shapefile | Système: WGS84/UTM |
+| donnees_socio_economiques | Données des ménages et troupeaux | CSV/JSON | Aucun |
+| donnees_climatiques | Données climatiques historiques et projections | NetCDF | Aucun |
+
+## Les sorties
+
+### Visualisation
+
+| **Type** | **Description** | **Format** | **Outils** |
+| - | - | - | - |
+| cartes_dynamiques | Cartographie dynamique de la mobilité pastorale et état des ressources | HTML interactif | GAMA GIS + Leaflet.js |
+| courbes_evolution | Graphiques temporels des indicateurs clés | SVG/PDF interactif | GAMA Charts + Plotly |
+| reseaux_sociaux | Visualisation des réseaux d'entraide et partage de ressources | GEXF/JSON | Gephy/Cytoscape |
+
+### Fichiers de sortie
+
+| **Type** | **Description** | **Format** | **Contenu** |
+| - | - | - | - |
+| resultats_bruts | Données brutes pour analyse statistique | CSV | Colonnes: step: Pas de temps, household_id: Identifiant ménage, location_x, location_y: Coordonnées UTM, livestock_count: Effectif bétail (TLU), income: Revenu journalier, biomass_available: Biomasse disponible locale |
+| metrics_agregees | Indicateurs agrégés par scénario | JSON | Données structurées |
+| rapport_synthese | Rapport automatique avec graphiques et analyses | PDF/HTML | Sections: résumé_exécutif, performance_écologique, résilience_sociale, recommandations_gestions |
+
+### Post-traitement
+
+**Outils recommandés** :
+- R Studio (analyse statistique)
+- Jupyter Notebook (analyse exploratoire)
+- QGIS (analyse spatiale)
+- Gephi (analyse de réseaux)
+
+**Scripts d'exemple** : `scripts/analysis/`

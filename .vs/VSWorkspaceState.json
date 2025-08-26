@@ -4,10 +4,8 @@
     "\\CIM-PIM_Transformation",
     "\\CIM-PIM_Transformation\\project_root",
     "\\CIM-PIM_Transformation\\project_root\\src",
-    "\\CIM-PIM_Transformation\\project_root\\src\\input",
-    "\\CIM-PIM_Transformation\\project_root\\src\\loader",
-    "\\CIM-PIM_Transformation\\project_root\\src\\sections"
+    "\\CIM-PIM_Transformation\\project_root\\src\\input"
   ],
-  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\sections\\initialization.py",
+  "SelectedNode": "\\CIM-PIM_Transformation\\project_root\\src\\input\\indicators.yml",
   "PreviewInSolutionExplorer": false
 }

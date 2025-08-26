@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Dict, Any
 from src.parsers.yaml_to_json import yaml_to_json
-from src.parsers.csv_to_json import csv_to_json
+from src.parsers.parser_csv_to_json_initialization import csv_to_json
 
 class InitializationLoader:
     def __init__(self):
@@ -22,17 +22,15 @@ class InitializationLoader:
             elif path.suffix == '.json':
                 input_format = 'json'
         
+         # Option 1: Chargement depuis CSV
         if input_format == 'csv' and path.is_dir():
-            csv_to_json('initialization', input_path, output_path, delimitor)
-        
-        elif input_format == 'csv' and path.is_file():
-            # Pour compatibilité avec l'ancien format CSV unique
-            csv_to_json('indicators', input_path, output_path, delimitor)
-          
-        
+            csv_to_json(input_path, output_path, delimitor)
+                  
+         # Option 2: Chargement depuis YAML
         elif input_format == 'yaml':
             yaml_to_json(input_path, output_path)
         
+        # Option 3: Chargement depuis JSON
         elif input_format == 'json':
             with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)

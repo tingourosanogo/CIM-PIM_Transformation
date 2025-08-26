@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Dict
 from src.parsers.yaml_to_json import yaml_to_json
-from src.parsers.csv_to_json import csv_to_json
+from src.parsers.parser_csv_to_json_indicator import csv_to_json
 
 class IndicatorLoader:
     def __init__(self):
@@ -24,7 +24,7 @@ class IndicatorLoader:
         
         
         if input_format == 'csv':
-            csv_to_json('indicators', input_path, output_path, delimitor)
+            csv_to_json(input_path, output_path, delimitor)
         
         elif input_format == 'yaml':
             yaml_to_json(input_path, output_path)

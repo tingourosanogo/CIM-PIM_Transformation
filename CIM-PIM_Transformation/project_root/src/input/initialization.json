@@ -1,19 +1,21 @@
 {
     "metadata": {
-        "protocol": "ODDv3",
         "model_name": "SocioEco_Model",
+        "protocol": "ODDv3",
         "version": "1.0.0",
         "creation_date": "2024-01-15",
         "last_modified": "2024-01-15",
         "authors": [
             {
-                "name": "Researcher A",
+                "model_name": "SocioEco_Model",
+                "author_name": "Researcher A",
                 "affiliation": "Institution X",
                 "role": "Domain Expert",
                 "orcid": "0000-0000-0000-0000"
             },
             {
-                "name": "Researcher B",
+                "model_name": "SocioEco_Model",
+                "author_name": "Researcher B",
                 "affiliation": "Institution Y",
                 "role": "Model Developer",
                 "orcid": "0000-0000-0000-0001"
@@ -21,16 +23,18 @@
         ],
         "references": [
             {
+                "model_name": "SocioEco_Model",
                 "citation": "Grimm et al. (2020). ODD protocol v3.0",
                 "doi": "10.18564/jasss.4259"
             },
             {
+                "model_name": "SocioEco_Model",
                 "citation": "Bousquet et al. (1998). CORMAS framework",
                 "doi": "10.1007/3-540-64582-9_76"
             }
         ]
     },
-    "initialization": {
+    "global": {
         "temporal_scope": {
             "start_date": "2020-01-01",
             "end_date": "2030-12-31",
@@ -64,13 +68,15 @@
                 "format": "GeoJSON",
                 "path": "data/parcels.geojson",
                 "description": "Agricultural parcel boundaries",
+                "resolution": null,
                 "source": "Registre Parcellaire",
-                "reliability": "high"
+                "uncertainty": "high"
             }
         ],
         "tabular_data": [
             {
                 "type": "csv",
+                "format": "csv",
                 "path": "data/household_survey.csv",
                 "description": "Socio-economic survey 2020",
                 "sample_size": 1500,
@@ -90,13 +96,17 @@
             "stratification_variables": [
                 "income_class",
                 "location"
-            ]
+            ],
+            "attribute_mapping": []
         },
         {
             "name": "ParcelEntity",
             "type": "environment",
+            "count": null,
             "initialization_method": "gis_import",
             "data_source": "data/parcels.geojson",
+            "sampling_strategy": null,
+            "stratification_variables": [],
             "attribute_mapping": [
                 {
                     "model_attribute": "size_ha",
@@ -119,7 +129,8 @@
                     "distribution": "normal",
                     "std_dev": 0.005
                 },
-                "sensitivity_rank": "high"
+                "sensitivity_rank": "high",
+                "validation": null
             },
             {
                 "name": "soil_mineralization_rate",
@@ -128,6 +139,8 @@
                 "unit": "kgN/kgOM/day",
                 "definition": "Rate of organic matter mineralization",
                 "source": "Local soil measurements",
+                "uncertainty": {},
+                "sensitivity_rank": null,
                 "validation": "lab_experiments"
             }
         ],
@@ -154,7 +167,8 @@
                     "regulation"
                 ],
                 "definition": "Policy intervention scenarios",
-                "source": "Stakeholder workshop"
+                "source": "Stakeholder workshop",
+                "impact_assessment": null
             }
         ]
     },
@@ -211,6 +225,7 @@
         {
             "name": "business_as_usual",
             "description": "Current trends continuation",
+            "based_on": null,
             "parameters": {
                 "climate_change_scenario": "RCP4.5",
                 "policy_intervention": "baseline"
@@ -255,17 +270,24 @@
     "validation": {
         "methods": [
             {
-                "name": "expert_validation",
-                "date": "2024-01-10",
+                "method_name": "expert_validation",
+                "validation_date": "2024-01-10",
                 "participants": 5,
+                "period": null,
+                "metric": null,
+                "metric_value": null,
+                "threshold": null,
                 "result": "parameters_approved"
             },
             {
-                "name": "historical_validation",
+                "method_name": "historical_validation",
+                "validation_date": null,
+                "participants": null,
                 "period": "2010-2020",
                 "metric": "Nash-Sutcliffe",
-                "value": 0.75,
-                "threshold": 0.6
+                "metric_value": 0.75,
+                "threshold": 0.6,
+                "result": null
             }
         ]
     },
@@ -279,7 +301,8 @@
         {
             "entity": "ParcelEntity",
             "rule": "land_use = categorical([0.3, 0.4, 0.2, 0.1])",
-            "implementation": "random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0.1])"
+            "implementation": "random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0.1])",
+            "assumptions": null
         }
     ]
 }

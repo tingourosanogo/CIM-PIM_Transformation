@@ -5,8 +5,11 @@
     "indicators_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.yml",
     "indicatorsJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.json",
     "indicators_format": {"format": "yaml", "delimitor": ";"},
-    "initialization_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization.yml",
+    "initialization_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization_data",
     "initializationJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization.json",
-    "initialization_format": {"format": "yaml", "delimitor": ";"},
+    "initialization_format": {"format": "csv", "delimitor": ","},
+    "userManual_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/user_manual.yml",
+    "userManualJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/user_manual.json",
+    "userManual_format": "yaml",
     "output_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/output/docs2.md"
 }

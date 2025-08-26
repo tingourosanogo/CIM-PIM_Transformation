@@ -6,10 +6,10 @@ from pathlib import Path
 from src.sections.structure import StructureSection
 from src.sections.indicators import IndicatorsSection
 from src.sections.initialization import InitializationSection
-from src.parsers.yaml_to_json import yaml_to_json
-from src.parsers.csv_to_json import csv_to_json
+from src.sections.userManual import UserManualSection
 from src.loader.indicator_loader import IndicatorLoader
 from src.loader.initialization_loader import InitializationLoader
+from src.loader.userManual_loader import UserManual_Loader
 from src.parsers.uml_parser import UMLParser
 from src.doc_builder import DocumentationBuilder
 from src.config import DocConfig
@@ -51,6 +51,7 @@ def main():
         StructureData_path = Path(config['xmi_path'])
         IndicatorsData_path = Path(config['indicators_path'])
         InitializationData_path = Path(config['initialization_path'])
+        UserManualData_path = Path(config['userManual_path'])
         
        
         if not StructureData_path.exists():
@@ -65,6 +66,9 @@ def main():
             raise FileNotFoundError(f"Fichier Initialisation introuvable: {InitializationData_path}")
         logger.info(f"Fichier d'entrée trouvé: {InitializationData_path}") # Les messages affichés à virer après le travail 
 
+        if not UserManualData_path.exists():
+            raise FileNotFoundError(f"Fichier Manuel Utilisateur introuvable: {UserManualData_path}")
+        logger.info(f"Fichier d'entrée trouvé: {UserManualData_path}") # Les messages affichés à virer après le travail 
 
         # 2. Parsing des données
         ## Section Structure (XMI)
@@ -95,16 +99,15 @@ def main():
         with open(initializationJson_path, mode='r', encoding='utf-8') as f:
             initialization_data = json.load(f)
 
-        '''
-        if indicators_format ['format'] == 'yaml':
-            yaml_to_json(IndicatorsData_path, indicatorsJson_path)
-        elif indicators_format ['format'] == 'csv':
-            delimitor = indicators_format.get('delimitor', ';')
-            csv_to_json('indicators', IndicatorsData_path, indicatorsJson_path, delimitor)
-        else:
-            raise ValueError(f"Format d'indicateurs non supporté: {indicators_format['format']}")
-        '''
+        ## Section Manuel d'utilisateur (YAML)
+        userManualJson_path = Path(config['userManualJson_path'])
+        userManual_format = config['userManual_format']
+        userManual_loader = UserManual_Loader()
+        userManual_data = userManual_loader.load_userManual_data(input_path=UserManualData_path, output_path=userManualJson_path, input_format=userManual_format)
         
+        with open(userManualJson_path, mode='r', encoding='utf-8') as f:
+            userManual_data = json.load(f)
+       
             
         logger.debug("Données indicateur parsées: %s", indicators_data) # afficher les données parsées au console
         logger.info("Parsing XMI réussi") # Les messages affichés à virer après le travail 
@@ -113,10 +116,12 @@ def main():
         structureSect = builder.build(xmi_parser)
         indicatorsSect = IndicatorsSection(indicators_data).generate()
         initializationSect = InitializationSection(initialization_data).generate()
+        userManualSect = UserManualSection(userManual_data).generate()
         sections = [
             structureSect,
             indicatorsSect,
-            initializationSect
+            initializationSect,
+            userManualSect
         ]
         logger.info("Génération Markdown terminée") # Les messages affichés à virer après le travail 
 
