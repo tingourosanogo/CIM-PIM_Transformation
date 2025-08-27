@@ -1,0 +1,3704 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>docs2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="introduction">Introduction</h1>
+<h2 id="principe-et-d%C3%A9finitions">Principe et définitions</h2>
+<p>Toute modélisation part d'une question de la forme :</p>
+<p><strong>Quel est l'impact de X sur Y étant donné Z ?</strong></p>
+<p>dans laquelle :</p>
+<ul>
+<li>
+<p>X définit l’ensemble des scénarios que l’on souhaite explorer</p>
+</li>
+<li>
+<p>Y l’ensemble des indicateurs que l’on souhaite observer comme réponse aux différents scénarios</p>
+</li>
+<li>
+<p>Z le contexte de la question</p>
+</li>
+</ul>
+<h3 id="concepts-fondamentaux">Concepts fondamentaux</h3>
+<ul>
+<li><strong>Système</strong> : Système structuré en entités et processus</li>
+</ul>
+<p><strong>Types d'attributs</strong> :</p>
+<ul>
+<li>
+<p><strong>parametres</strong> : dont la valeur ne varie pas au fil de la simulation</p>
+</li>
+<li>
+<p><strong>variables_etat</strong> : dont la simulation fait varier la valeur au fil du temps</p>
+</li>
+</ul>
+<p><strong>Portée des attributs</strong> :</p>
+<ul>
+<li>
+<p>globaux : partagés par tout le système (nous avons choisi de les décrire dans l’entité « système »)</p>
+</li>
+<li>
+<p>locaux : partagés par entités de même type</p>
+</li>
+<li>
+<p>individuels : spécifiques à chaque entité</p>
+</li>
+</ul>
+<h3 id="relations-questions-mod%C3%A8le">Relations questions-modèle</h3>
+<p><strong>Formalisation</strong> :</p>
+<pre class="hljs"><code><div>X ⊆ A, Z ⊆ A, X ∩ Z = ∅, X ∪ Z = A
+</div></code></pre>
+<pre class="hljs"><code><div>X est un sous-ensemble des attributs (de A)
+</div></code></pre>
+<pre class="hljs"><code><div>Z est un sous-ensemble des attributs disjoint de X
+</div></code></pre>
+<pre class="hljs"><code><div>X union Z = A
+</div></code></pre>
+<pre class="hljs"><code><div>Y est calculé à partir des attributs
+</div></code></pre>
+<p><strong>Implication</strong> : Un choix différent de X et Z permet de répondre à d'autres questions avec le même modèle On peut donc imaginer l’ensemble des questions auxquelles un même modèle peut répondre.</p>
+<h2 id="le-mod%C3%A8le">Le modèle</h2>
+<p>La question retenue pour le modèle est :</p>
+<p><strong>Quel est l'impact des schémas de gestion et des facteurs exogènes sur la durabilité des ressources naturelles ?</strong></p>
+<p><strong>Domaine</strong> : socio-écosystème agricole</p>
+<p><strong>Échelle</strong> : territoriale</p>
+<h3 id="repr%C3%A9sentations-graphiques">Représentations graphiques</h3>
+<p><img src="C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/diagrammes/question.png" alt=""></p>
+<p><strong>Figure 1</strong> : Question de recherche schématisée</p>
+<p>Sur la flèche diagonale, on représente qu’une combinaison (X) de schémas de gestion et de facteurs impacte les stocks.
+En bas à droite, les stocks sont des quantités de ressource pour différents usages (par les humains, les animaux, les plantes et autres processus biophysiques).
+Au milieu en bas, un porteur de ressource est composé de divers stocks et met en œuvre une dynamique qui utilise des stocks comme ressources et produits des stocks.
+A gauche, les schémas de gestion sont des ensembles de schémas de gestion, mis-en-oeuvre par un acteur (sujet). On distingue les schémas de gestion individuels des
+schémas de gestion collectif mis-en-oeuvre par les auteurs correspondant. Dans notre cas, les acteurs individuels sont des exploitations; les acteurs collectifs sont des villages.
+Au milieu en haut, les facteurs exogènes sont un ensemble de facteurs, un facteur pouvant être comme suit</p>
+<p><img src="C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/diagrammes/facteurs.png" alt=""></p>
+<p><strong>Figure 2</strong> : Facteurs exogènes</p>
+<p>Les facteurs exogènes sont un ensemble de facteurs influençant
+le système sans être contrôlés par les acteurs.</p>
+<h3 id="composants-principaux">Composants principaux</h3>
+<h4 id="porteursressources">Porteurs_Ressources</h4>
+<p><strong>Description</strong> : Composés de divers stocks et mettent en œuvre des dynamiques</p>
+<p><strong>Rôle</strong> : Utilisent des stocks comme ressources et produisent des stocks</p>
+<h4 id="schemasgestion">Schemas_Gestion</h4>
+<p><strong>Description</strong> : Ensembles de schémas de gestion mis en œuvre par des acteurs</p>
+<p><strong>Types</strong> :</p>
+<ul>
+<li>
+<p>individuels : par exploitation</p>
+</li>
+<li>
+<p>collectifs : par village</p>
+</li>
+</ul>
+<h4 id="stocks">Stocks</h4>
+<p><strong>Description</strong> : Quantités de ressources pour différents usages</p>
+<p><strong>Usages</strong> :</p>
+<ul>
+<li>
+<p>humains</p>
+</li>
+<li>
+<p>animaux</p>
+</li>
+<li>
+<p>plantes</p>
+</li>
+<li>
+<p>processus biophysiques</p>
+</li>
+</ul>
+<h3 id="acteurs-du-syst%C3%A8me">Acteurs du système</h3>
+<ul>
+<li><strong>Individuels</strong> : exploitations agricoles</li>
+<li><strong>Collectifs</strong> : villages, coopératives</li>
+</ul>
+<h2 id="contextualisation">Contextualisation</h2>
+<p><strong>Domaine d'application</strong> : agroécologie, gestion des ressources naturelles</p>
+<p><strong>Pertinence scientifique</strong> : Modélisation des interactions complexes entre pratiques de gestion
+et dynamiques des ressources dans un contexte de changement global</p>
+<p><strong>Public cible</strong> :</p>
+<ul>
+<li>décideurs politiques</li>
+<li>chercheurs en socio-écosystèmes</li>
+<li>acteurs territoriaux</li>
+</ul>
+<h1 id="structure-et-dynamique">Structure et dynamique</h1>
+<h2 id="entit%C3%A9--actor">Entité : Actor</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>...</td>
+<td>string</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>...</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--individualactor">Entité : IndividualActor</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<h4 id="processus-manageresource"><em>Processus: manageResource</em></h4>
+<h5 id="documentation">Documentation :</h5>
+<p><em>Description à compléter</em></p>
+<h5 id="attributs">Attributs</h5>
+<p>Le processus dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Le processus agit sur les variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>et dépend des paramètres suivants :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h5 id="comportement">Comportement</h5>
+<p><em>Description détaillée du processus avec, éventuellement des sous-processus, des équations, des diagrammes d’état ou d’activité (UML), etc.</em></p>
+<h6 id="%C3%A9quation--a-compl%C3%A9ter">Équation : <em>A compléter</em></h6>
+<h6 id="diagramme--a-compl%C3%A9ter">Diagramme : <em>A compléter</em></h6>
+<h5 id="code">Code</h5>
+<p><em>Le code ou pseudo-code s'il existe pour ceux qui peuvent le comprendre.</em></p>
+<p><em>A compléter</em></p>
+<h2 id="entit%C3%A9--resource">Entité : Resource</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>...</td>
+<td>string</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--farmingactivity">Entité : FarmingActivity</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startDate</code></td>
+<td>...</td>
+<td>date</td>
+</tr>
+<tr>
+<td><code>endDate</code></td>
+<td>...</td>
+<td>date</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--livestock">Entité : Livestock</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>herdSize</code></td>
+<td>...</td>
+<td>integer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<h4 id="processus-producemeat"><em>Processus: produceMeat</em></h4>
+<h5 id="documentation">Documentation :</h5>
+<p><em>Description à compléter</em></p>
+<h5 id="attributs">Attributs</h5>
+<p>Le processus dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Le processus agit sur les variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>et dépend des paramètres suivants :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h5 id="comportement">Comportement</h5>
+<p><em>Description détaillée du processus avec, éventuellement des sous-processus, des équations, des diagrammes d’état ou d’activité (UML), etc.</em></p>
+<h6 id="%C3%A9quation--a-compl%C3%A9ter">Équation : <em>A compléter</em></h6>
+<h6 id="diagramme--a-compl%C3%A9ter">Diagramme : <em>A compléter</em></h6>
+<h5 id="code">Code</h5>
+<p><em>Le code ou pseudo-code s'il existe pour ceux qui peuvent le comprendre.</em></p>
+<p><em>A compléter</em></p>
+<h4 id="processus-producemilk"><em>Processus: produceMilk</em></h4>
+<h5 id="documentation">Documentation :</h5>
+<p><em>Description à compléter</em></p>
+<h5 id="attributs">Attributs</h5>
+<p>Le processus dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Le processus agit sur les variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>et dépend des paramètres suivants :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h5 id="comportement">Comportement</h5>
+<p><em>Description détaillée du processus avec, éventuellement des sous-processus, des équations, des diagrammes d’état ou d’activité (UML), etc.</em></p>
+<h6 id="%C3%A9quation--a-compl%C3%A9ter">Équation : <em>A compléter</em></h6>
+<h6 id="diagramme--a-compl%C3%A9ter">Diagramme : <em>A compléter</em></h6>
+<h5 id="code">Code</h5>
+<p><em>Le code ou pseudo-code s'il existe pour ceux qui peuvent le comprendre.</em></p>
+<p><em>A compléter</em></p>
+<h2 id="entit%C3%A9--plant">Entité : Plant</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>species</code></td>
+<td>...</td>
+<td>string</td>
+</tr>
+<tr>
+<td><code>biomass</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<h4 id="processus-absorbnutrients"><em>Processus: absorbNutrients</em></h4>
+<h5 id="documentation">Documentation :</h5>
+<p><em>Description à compléter</em></p>
+<h5 id="attributs">Attributs</h5>
+<p>Le processus dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Le processus agit sur les variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variables d'état</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>et dépend des paramètres suivants :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h5 id="comportement">Comportement</h5>
+<p><em>Description détaillée du processus avec, éventuellement des sous-processus, des équations, des diagrammes d’état ou d’activité (UML), etc.</em></p>
+<h6 id="%C3%A9quation--a-compl%C3%A9ter">Équation : <em>A compléter</em></h6>
+<h6 id="diagramme--a-compl%C3%A9ter">Diagramme : <em>A compléter</em></h6>
+<h5 id="code">Code</h5>
+<p><em>Le code ou pseudo-code s'il existe pour ceux qui peuvent le comprendre.</em></p>
+<p><em>A compléter</em></p>
+<h2 id="entit%C3%A9--product">Entité : Product</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quality</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--meat">Entité : Meat</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cutType</code></td>
+<td>...</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--milk">Entité : Milk</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fatContent</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--watersource">Entité : WaterSource</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>capacity</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--surfacewater">Entité : SurfaceWater</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--soil">Entité : Soil</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fertility</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+<tr>
+<td><code>compaction</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--consumption">Entité : Consumption</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>...</td>
+<td>date</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h2 id="entit%C3%A9--growth">Entité : Growth</h2>
+<h3 id="documentation">Documentation</h3>
+<p><em>Description à compléter</em></p>
+<h3 id="attributs">Attributs</h3>
+<p><strong>Attributs partagés (fixes)</strong></p>
+<p>Les attributs dont la valeur est la même pour toutes les instances et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables partagées</strong></p>
+<p>Les variables dont la valeur est la même pour toutes les instances et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributs individuels</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et évolue au cours de la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variables individuelles (fixes)</strong></p>
+<p>Les attributs dont la valeur est différente pour chaque instance et fixe dans la simulation :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Commentaire</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rate</code></td>
+<td>...</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<h3 id="questions-ouvertes">Questions ouvertes</h3>
+<p><em>Liste des points à discuter.</em></p>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h3 id="dynamiques">Dynamiques</h3>
+<p><em>Section vide : à compléter manuellement</em></p>
+<h1 id="indicateurs">Indicateurs</h1>
+<h2 id="pastoralisme">Pastoralisme</h2>
+<h3 id="indicateur-pa0101--charge-animale-instantan%C3%A9e-ubtha">Indicateur PA.01.01 : Charge animale instantanée (UBT/ha)</h3>
+<h4 id="description">Description</h4>
+<p>Nombre d'unités de bétail (UBT) par hectare de pâturage disponible. Indicateur clé de pression sur les ressources fourragères.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>CA = (Nombre UBT) / (Surface pâturable)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre_ubt</td>
+<td>Troupeau</td>
+<td>Effectif converti en unité de bétail tropical</td>
+<td>UBT</td>
+</tr>
+<tr>
+<td>surface_paturage</td>
+<td>Espace</td>
+<td>Surface accessible au pâturage</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>facteur_saison</td>
+<td>Système</td>
+<td>Coefficient saisonnier d'ajustement</td>
+<td>coefficient</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0201--taux-de-rotation-des-p%C3%A2turages-rotationsan">Indicateur PA.02.01 : Taux de rotation des pâturages (rotations/an)</h3>
+<h4 id="description">Description</h4>
+<p>Fréquence de rotation des troupeaux entre parcelles. Critique pour la durabilité des parcours.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>TR = (Nombre rotations) / (Période analysée)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre_rotations</td>
+<td>Troupeau</td>
+<td>Nombre de déplacements entre parcelles</td>
+<td>n</td>
+</tr>
+<tr>
+<td>periode_analyse</td>
+<td>Système</td>
+<td>Période d'observation</td>
+<td>jours</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>duree_min_sejour</td>
+<td>Parcelle</td>
+<td>Durée minimale entre deux rotations</td>
+<td>jours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0301--taux-de-charge-soutenable-ubthaan">Indicateur PA.03.01 : Taux de charge soutenable (UBT/ha/an)</h3>
+<h4 id="description">Description</h4>
+<p>Capacité de charge maximale sans dégradation à long terme. Basé sur la productivité fourragère.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>TCS = (Production fourragère annuelle) / (Consommation UBT)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>production_fourrage</td>
+<td>Parcelle</td>
+<td>Biomasse fourragère produite annuellement</td>
+<td>kg MS/ha</td>
+</tr>
+<tr>
+<td>consommation_ubt</td>
+<td>Troupeau</td>
+<td>Besoin annuel moyen par UBT</td>
+<td>kg MS/UBT</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>facteur_resilience</td>
+<td>Ecosystème</td>
+<td>Coefficient de résilience des parcours</td>
+<td>coefficient</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0401--d%C3%A9pendance-aux-aliments-externes">Indicateur PA.04.01 : Dépendance aux aliments externes (%)</h3>
+<h4 id="description">Description</h4>
+<p>Proportion des besoins alimentaires du bétail couverte par des achats externes. Indicateur de vulnérabilité économique.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>DAE = (Quantité aliments achetés) / (Besoins totaux) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aliments_achetes</td>
+<td>Troupeau</td>
+<td>Quantité d'aliments complémentaires acquis</td>
+<td>kg MS</td>
+</tr>
+<tr>
+<td>besoins_totaux</td>
+<td>Troupeau</td>
+<td>Requête alimentaire annuelle du troupeau</td>
+<td>kg MS</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prix_moyen_aliment</td>
+<td>Marché</td>
+<td>Coût moyen des aliments achetés</td>
+<td>€/kg MS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0501--productivit%C3%A9-laiti%C3%A8re-sp%C3%A9cifique-lfemellean">Indicateur PA.05.01 : Productivité laitière spécifique (L/femelle/an)</h3>
+<h4 id="description">Description</h4>
+<p>Production laitière rapportée au nombre de femelles en lactation. Indicateur clé de performance zootechnique.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>PLS = (Production laitière annuelle) / (Nombre femelles)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>production_laitiere</td>
+<td>Troupeau</td>
+<td>Volume total de lait produit sur l'année</td>
+<td>L</td>
+</tr>
+<tr>
+<td>nombre_femelles</td>
+<td>Troupeau</td>
+<td>Effectif moyen des femelles en lactation</td>
+<td>têtes</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>duree_lactation</td>
+<td>Troupeau</td>
+<td>Période standard de lactation</td>
+<td>jours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0601--indice-de-mobilit%C3%A9-pastorale-kmjour">Indicateur PA.06.01 : Indice de mobilité pastorale (km/jour)</h3>
+<h4 id="description">Description</h4>
+<p>Distance annuelle moyenne parcourue par le troupeau. Clé pour l'accès aux ressources.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>IMP = (Distance totale) / (Nombre jours)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>distance_parcourue</td>
+<td>Troupeau</td>
+<td>Distance totale annuelle de transhumance</td>
+<td>km</td>
+</tr>
+<tr>
+<td>jours_paturage</td>
+<td>Troupeau</td>
+<td>Nombre de jours de pâturage effectifs</td>
+<td>jours</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>facteur_saison</td>
+<td>Climat</td>
+<td>Coefficient d'ajustement saisonnier</td>
+<td>sans dimension</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0701--taux-de-renouvellement-du-troupeau-an">Indicateur PA.07.01 : Taux de renouvellement du troupeau (%/an)</h3>
+<h4 id="description">Description</h4>
+<p>Proportion d'animaux remplacés annuellement. Indicateur de gestion démographique.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>TRT = (Nombre sorties) / (Effectif moyen) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre_sorties</td>
+<td>Troupeau</td>
+<td>Animaux vendus ou décédés</td>
+<td>têtes</td>
+</tr>
+<tr>
+<td>effectif_moyen</td>
+<td>Troupeau</td>
+<td>Effectif moyen annuel du troupeau</td>
+<td>têtes</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>taux_optimal</td>
+<td>Troupeau</td>
+<td>Valeur cible pour une gestion durable</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-pa0801--pression-pastorale-%C3%A9quivalente-ubthaindice">Indicateur PA.08.01 : Pression pastorale équivalente (UBT/ha/indice)</h3>
+<h4 id="description">Description</h4>
+<p>Charge animale ajustée par la productivité des parcours. Permet des comparaisons intersites.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>PPE = (UBT) / (Indice productivité)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unite_betail_total</td>
+<td>Troupeau</td>
+<td>Nombre d'unités de bétail tropical</td>
+<td>UBT</td>
+</tr>
+<tr>
+<td>indice_productivite</td>
+<td>Parcours</td>
+<td>Productivité fourragère du parcours</td>
+<td>kg MS/ha</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capacite_charge</td>
+<td>Parcours</td>
+<td>Charge animale soutenable à long terme</td>
+<td>UBT/ha</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agro%C3%A9cologie">Agroécologie</h2>
+<h3 id="indicateur-ae0101--indice-de-diversit%C3%A9-culturale-nd">Indicateur AE.01.01 : Indice de diversité culturale (n.d.)</h3>
+<h4 id="description">Description</h4>
+<p>Mesure la diversité des cultures selon l'indice de Shannon. Corrélé à la résilience du système.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>IDC = -Σ(p_i * ln(p_i))
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p_i</td>
+<td>Parcelle</td>
+<td>Proportion de la culture i dans la rotation</td>
+<td>[0-1]</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seuil_diversite</td>
+<td>Système</td>
+<td>Valeur cible pour une diversité optimale</td>
+<td>indice</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0201--taux-de-couverture-v%C3%A9g%C3%A9tale">Indicateur AE.02.01 : Taux de couverture végétale (%)</h3>
+<h4 id="description">Description</h4>
+<p>Pourcentage de sol couvert par la végétation vivante ou morte. Réduit l'érosion et améliore l'infiltration.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>TCV = (Surface couverte) / (Surface totale) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>surface_couverte</td>
+<td>Parcelle</td>
+<td>Surface sous couvert végétal</td>
+<td>ha</td>
+</tr>
+<tr>
+<td>surface_totale</td>
+<td>Parcelle</td>
+<td>Surface totale de l'unité d'observation</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seuil_optimal</td>
+<td>Système</td>
+<td>Couverture végétale cible</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0301--indice-de-connectivit%C3%A9-biologique-hapts">Indicateur AE.03.01 : Indice de connectivité biologique (ha.pts)</h3>
+<h4 id="description">Description</h4>
+<p>Mesure la connectivité des habitats naturels dans la matrice agricole. Essentiel pour la biodiversité fonctionnelle.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>ICB = Σ(Superficie corridor_i * Pondération_i)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>superficie_corridor</td>
+<td>Paysage</td>
+<td>Superficie du corridor écologique</td>
+<td>ha</td>
+</tr>
+<tr>
+<td>ponderation_ecologique</td>
+<td>Paysage</td>
+<td>Valeur de connectivité spécifique à l'habitat</td>
+<td>points</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seuil_connectivite</td>
+<td>Paysage</td>
+<td>Seuil minimum pour une connectivité fonctionnelle</td>
+<td>sans dimension</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0401--taux-de-mati%C3%A8re-organique-du-sol">Indicateur AE.04.01 : Taux de matière organique du sol (%)</h3>
+<h4 id="description">Description</h4>
+<p>Concentration en matière organique dans les 20 premiers cm de sol. Proxy de la santé des sols.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>MOS = (Poids MO) / (Poids sol sec) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>poids_matiere_organique</td>
+<td>Sol</td>
+<td>Poids sec de la matière organique</td>
+<td>g</td>
+</tr>
+<tr>
+<td>poids_sol_sec</td>
+<td>Sol</td>
+<td>Poids total du sol séché à l'étuve</td>
+<td>g</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profondeur_prelevement</td>
+<td>Sol</td>
+<td>Profondeur standard d'échantillonnage</td>
+<td>cm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0501--efficience-dutilisation-de-leau-kgm%C2%B3">Indicateur AE.05.01 : Efficience d'utilisation de l'eau (kg/m³)</h3>
+<h4 id="description">Description</h4>
+<p>Biomasse produite par unité d'eau consommée. Critique en zones arides.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>WUE = (Production biomasse) / (ETR)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>production_biomasse</td>
+<td>Culture</td>
+<td>Biomasse aérienne sèche produite</td>
+<td>kg/ha</td>
+</tr>
+<tr>
+<td>evapotranspiration</td>
+<td>Climat</td>
+<td>Evapotranspiration réelle de la culture</td>
+<td>mm</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coefficient_culture</td>
+<td>Culture</td>
+<td>Coefficient spécifique à l'espèce cultivée</td>
+<td>sans dimension</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0601--indice-dautonomie-en-intrants">Indicateur AE.06.01 : Indice d'autonomie en intrants (%)</h3>
+<h4 id="description">Description</h4>
+<p>Part des intrants produits sur l'exploitation. Mesure la circularité du système.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>IAI = (Intrants internes) / (Intrants totaux) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intrants_internes</td>
+<td>Système</td>
+<td>Intrants produits sur l'exploitation</td>
+<td>kg</td>
+</tr>
+<tr>
+<td>intrants_totaux</td>
+<td>Système</td>
+<td>Consommation totale d'intrants</td>
+<td>kg</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seuil_autonomie</td>
+<td>Système</td>
+<td>Niveau minimal pour une exploitation durable</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0701--indice-de-sp%C3%A9cialisation-parcellaire-fonctionsparcelle">Indicateur AE.07.01 : Indice de spécialisation parcellaire (fonctions/parcelle)</h3>
+<h4 id="description">Description</h4>
+<p>Nombre moyen de fonctions par parcelle (production, biodiversité...). Inverse de la spécialisation.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>ISP = Σ(Fonctions_i) / (Nombre parcelles)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre_fonctions</td>
+<td>Parcelle</td>
+<td>Fonctions identifiées par parcelle</td>
+<td>nombre</td>
+</tr>
+<tr>
+<td>nombre_parcelles</td>
+<td>Système</td>
+<td>Parcelles totales dans l'exploitation</td>
+<td>nombre</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>poids_fonction</td>
+<td>Système</td>
+<td>Coefficient d'importance relative des fonctions</td>
+<td>sans dimension</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0702--diversit%C3%A9-culturale-esp%C3%A8cesparcelle">Indicateur AE.07.02 : Diversité culturale (espèces/parcelle)</h3>
+<h4 id="description">Description</h4>
+<p>Nombre moyen d'espèces cultivées par parcelle</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>Σ(espèces_i) / (surface_observée)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>especes_cultivees</td>
+<td>Parcelle</td>
+<td>Nombre d'espèces distinctes cultivées</td>
+<td>nombre</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>surface_observée</td>
+<td>Espace</td>
+<td>Surface échantillonnée</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-ae0703--diversit%C3%A9-culturale-esp%C3%A8cesparcelle">Indicateur AE.07.03 : Diversité culturale (espèces/parcelle)</h3>
+<h4 id="description">Description</h4>
+<p>Nombre moyen d'espèces cultivées par parcelle</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>Σ(espèces_i) / (nombre_parcelles)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>especes_cultivees</td>
+<td>Parcelle</td>
+<td>Nombre d'espèces identifiées</td>
+<td>nombre</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>poids_espece</td>
+<td>Système</td>
+<td>Coefficient de valeur écologique</td>
+<td>sans dimension</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environnemental">Environnemental</h2>
+<h3 id="indicateur-ca0101--tendance-d%C3%A9volution-de-la-pluviom%C3%A9trie--de-variation-annuelle">Indicateur CA.01.01 : Tendance d'évolution de la pluviométrie (% de variation annuelle)</h3>
+<h4 id="description">Description</h4>
+<p>Analyse l'évolution de la pluviométrie dans le territoire. Indicateur de caractérisation de la vulnérabilité climatique. Valeurs négatives = baisse, positives = hausse.</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>CA.01.01 = a * CA.01.01 + (pluviométrie - pluviométrie-1)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pluviométrie</td>
+<td>Climat</td>
+<td>La quantité de pluie annuelle cette année</td>
+<td>mm/an</td>
+</tr>
+<tr>
+<td>pluviométrie-1</td>
+<td>Climat</td>
+<td>La quantité de pluie annuelle l'année précédente (n-1)</td>
+<td>mm/an</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>Climat</td>
+<td>Facteur d'amortissement du passé</td>
+<td>sans</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d%C3%A9mographique">Démographique</h2>
+<h3 id="indicateur-ca0201--taux-de-croissance-annuelle-de-la-population">Indicateur CA.02.01 : Taux de croissance annuelle de la population (%)</h3>
+<h4 id="description">Description</h4>
+<p>Croissance démographique dans les terroirs sur 30 ans. Indicateur de pression anthropique (2,6% aux derniers calculs).</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>Donnée directe (pas de calcul)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>taux-croissance</td>
+<td>ActeurIndividuel</td>
+<td>Taux de croissance démographique du foyer</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%C3%A9conomique">Économique</h2>
+<h3 id="indicateur-ec0101--rentabilit%C3%A9-moyenne-des-exploitations-%E2%82%AChaan">Indicateur EC.01.01 : Rentabilité moyenne des exploitations (€/ha/an)</h3>
+<h4 id="description">Description</h4>
+<p>Marge brute moyenne par hectare cultivé</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>(revenu_total - couts_production) / surface_totale
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>revenu_total</td>
+<td>Exploitation</td>
+<td>Chiffre d'affaires annuel</td>
+<td>€/an</td>
+</tr>
+<tr>
+<td>couts_production</td>
+<td>Exploitation</td>
+<td>Coûts opérationnels annuels</td>
+<td>€/an</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>surface_totale</td>
+<td>Espace</td>
+<td>Surface cultivée totale</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<h2 id="social">Social</h2>
+<h3 id="indicateur-so0101--taux-demploi-local">Indicateur SO.01.01 : Taux d'emploi local (%)</h3>
+<h4 id="description">Description</h4>
+<p>Part de la main d'œuvre issue du territoire</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>emplois_locaux / emplois_totaux * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emplois_locaux</td>
+<td>ActeurIndividuel</td>
+<td>Nombre de travailleurs résidant dans le territoire</td>
+<td>personnes</td>
+</tr>
+<tr>
+<td>emplois_totaux</td>
+<td>ActeurIndividuel</td>
+<td>Nombre total de travailleurs</td>
+<td>personnes</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="climat">Climat</h2>
+<h3 id="indicateur-cl0301--bilan-carbone-tco2eqhaan">Indicateur CL.03.01 : Bilan carbone (tCO2eq/ha/an)</h3>
+<h4 id="description">Description</h4>
+<p>Émissions nettes de GES par hectare</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>(émissions - séquestration) / surface
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>émissions</td>
+<td>Exploitation</td>
+<td>Émissions totales de GES</td>
+<td>tCO2eq/an</td>
+</tr>
+<tr>
+<td>séquestration</td>
+<td>Sol</td>
+<td>Carbone séquestré dans les sols</td>
+<td>tCO2eq/an</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>surface</td>
+<td>Espace</td>
+<td>Surface agricole utile</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-cl0302--indice-de-r%C3%A9silience-climatique">Indicateur CL.03.02 : Indice de résilience climatique (%)</h3>
+<h4 id="description">Description</h4>
+<p>Capacité à maintenir la production sous stress climatique</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>(production_reelle / production_potentielle) * 100
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>production_reelle</td>
+<td>Exploitation</td>
+<td>Production effective en année stressante</td>
+<td>t/ha</td>
+</tr>
+<tr>
+<td>production_potentielle</td>
+<td>Exploitation</td>
+<td>Production théorique optimale</td>
+<td>t/ha</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="biodiversit%C3%A9">Biodiversité</h2>
+<h3 id="indicateur-bd0401--indice-de-biodiversit%C3%A9-fonctionnelle-points">Indicateur BD.04.01 : Indice de biodiversité fonctionnelle (points)</h3>
+<h4 id="description">Description</h4>
+<p>Abondance relative d'espèces indicatrices</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>Σ(abondance_espèce_i * poids_écologique_i)
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abondance_especes</td>
+<td>Écosystème</td>
+<td>Nombre d'individus par espèce</td>
+<td>individus/ha</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>poids_ecologique</td>
+<td>Système</td>
+<td>Valeur écologique de l'espèce</td>
+<td>coefficient</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indicateur-bd0402--indice-de-biodiversit%C3%A9-esp%C3%A8cesha">Indicateur BD.04.02 : Indice de biodiversité (espèces/ha)</h3>
+<h4 id="description">Description</h4>
+<p>Richesse spécifique normalisée</p>
+<h4 id="calcul">Calcul</h4>
+<pre class="hljs"><code><div>nombre_espèces / surface_reference
+</div></code></pre>
+<h4 id="attributs">Attributs</h4>
+<p>L’indicateur dépend des variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th><strong>variables</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre_espèces</td>
+<td>Espace</td>
+<td>Espèces identifiées</td>
+<td>nombre</td>
+</tr>
+</tbody>
+</table>
+<p>Et dépend des paramètres suivants</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Unité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>surface_reference</td>
+<td>Système</td>
+<td>Surface de référence</td>
+<td>ha</td>
+</tr>
+</tbody>
+</table>
+<h1 id="initialisation">Initialisation</h1>
+<h2 id="initialisation">Initialisation</h2>
+<h3 id="port%C3%A9e-temporelle">Portée Temporelle</h3>
+<p><em>Configuration temporelle à compléter.</em></p>
+<h3 id="configuration-spatiale">Configuration Spatiale</h3>
+<p><em>Configuration spatiale à compléter.</em></p>
+<h2 id="donn%C3%A9es-dentr%C3%A9e">Données d'Entrée</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Description des différentes sources de données utilisées pour l'initialisation du modèle.</p>
+<p>Cette section recense l'ensemble des données d'entrée nécessaires au fonctionnement du modèle, incluant les données spatiales, tabulaires et autres sources de données.</p>
+<h3 id="donn%C3%A9es-spatiales">Données Spatiales</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Chemin</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Résolution</strong></th>
+<th><strong>Qualité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raster</td>
+<td>GeoTIFF</td>
+<td><code>data/land_use.tif</code></td>
+<td>CORINE Land Cover 2020</td>
+<td>100m</td>
+<td>low</td>
+</tr>
+<tr>
+<td>vector</td>
+<td>GeoJSON</td>
+<td><code>data/parcels.geojson</code></td>
+<td>Agricultural parcel boundaries</td>
+<td>None</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+<h3 id="donn%C3%A9es-tabulaires">Données Tabulaires</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Chemin</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Taille</strong></th>
+<th><strong>Taux Réponse</strong></th>
+<th><strong>Validation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>csv</td>
+<td>csv</td>
+<td><code>data/household_survey.csv</code></td>
+<td>Socio-economic survey 2020</td>
+<td>1500</td>
+<td>78%%</td>
+<td>cross_validation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="entit%C3%A9s">Entités</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Description des entités, agents et objets du modèle.</p>
+<p>Cette section spécifie comment chaque entité est initialisée et quelles données sont utilisées pour leur création.</p>
+<h3 id="liste-des-entit%C3%A9s">Liste des Entités</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Nom</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Effectif</strong></th>
+<th><strong>Méthode d'Initialisation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HouseholdAgent</strong></td>
+<td>agent</td>
+<td>1500</td>
+<td>data_driven</td>
+</tr>
+<tr>
+<td><strong>ParcelEntity</strong></td>
+<td>environment</td>
+<td>N/A</td>
+<td>gis_import</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d%C3%A9tails-par-entit%C3%A9">Détails par Entité</h3>
+<h4 id="entit%C3%A9--householdagent">Entité : HouseholdAgent</h4>
+<p><strong>Type</strong> : agent</p>
+<p><strong>Effectif</strong> : 1500</p>
+<p><strong>Méthode d'initialisation</strong> : <code>data_driven</code></p>
+<p><strong>Source de données</strong> : <code>data/household_survey.csv</code></p>
+<p><strong>Stratégie d'échantillonnage</strong> : <code>stratified_random</code></p>
+<p><strong>Variables de stratification</strong> : <code>income_class</code>, <code>location</code></p>
+<h4 id="entit%C3%A9--parcelentity">Entité : ParcelEntity</h4>
+<p><strong>Type</strong> : environment</p>
+<p><strong>Méthode d'initialisation</strong> : <code>gis_import</code></p>
+<p><strong>Source de données</strong> : <code>data/parcels.geojson</code></p>
+<p><strong>Mapping d'attributs :</strong></p>
+<ul>
+<li><code>size_ha</code> ← <code>area</code> (conversion: <code>square_meters_to_hectares</code>)</li>
+</ul>
+<h2 id="param%C3%A8tres">Paramètres</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Cette section présente l'ensemble des paramètres du modèle, divisés en deux catégories :</p>
+<ul>
+<li><strong>Paramètres fixes (Z)</strong> : Valeurs constantes pour toutes les simulations</li>
+<li><strong>Paramètres variables (X)</strong> : Valeurs à explorer dans les scénarios</li>
+</ul>
+<h3 id="param%C3%A8tres-fixes-z">Paramètres Fixes (Z)</h3>
+<p>Paramètres dont la valeur est constante pour toutes les simulations :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Valeur</strong></th>
+<th><strong>Incertitude</strong></th>
+<th><strong>Sensibilité</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>discount_rate</code></td>
+<td>HouseholdAgent</td>
+<td>Temporal discount rate for decision-making</td>
+<td>dimensionless</td>
+<td><strong>0.03</strong></td>
+<td>Dist: normal, σ: 0.005</td>
+<td>high</td>
+</tr>
+<tr>
+<td><code>soil_mineralization_rate</code></td>
+<td>ParcelEntity</td>
+<td>Rate of organic matter mineralization</td>
+<td>kgN/kgOM/day</td>
+<td><strong>0.15</strong></td>
+<td>Non quantifié</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="param%C3%A8tres-variables-x">Paramètres Variables (X)</h3>
+<p>Paramètres à explorer dans les scénarios :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètre</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Définition</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Valeurs</strong></th>
+<th><strong>Impact</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>climate_change_scenario</code></td>
+<td>Global</td>
+<td>IPCC climate scenarios</td>
+<td>...</td>
+<td><strong>RCP2.6, RCP4.5, RCP8.5</strong></td>
+<td>high</td>
+</tr>
+<tr>
+<td><code>policy_intervention</code></td>
+<td>Global</td>
+<td>Policy intervention scenarios</td>
+<td>...</td>
+<td><strong>baseline, subsidy, tax, regulation</strong></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="variables-d%C3%A9tat-initiales">Variables d'État Initiales</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Les variables d'état représentent l'état initial du système au début de la simulation.</p>
+<p><strong>Variables fixes</strong> : Valeurs initiales constantes pour toutes les simulations<br>
+<strong>Variables variables</strong> : Plages de valeurs à explorer dans les scénarios</p>
+<h3 id="variables-d%C3%A9tat-fixes">Variables d'État Fixes</h3>
+<p>Valeurs initiales constantes pour toutes les simulations :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Valeur</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Distribution</strong></th>
+<th><strong>Paramètres</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initial_wealth</code></td>
+<td>HouseholdAgent</td>
+<td><strong>50000</strong></td>
+<td>EUR</td>
+<td>lognormal</td>
+<td>mean=10.82, sigma=0.8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variables-d%C3%A9tat-variables">Variables d'État Variables</h3>
+<p>Plages de valeurs initiales à explorer dans les scénarios :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Entité</strong></th>
+<th><strong>Valeurs</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Distribution</strong></th>
+<th><strong>Probabilités</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>land_use_type</code></td>
+<td>ParcelEntity</td>
+<td>forest, agriculture, ..., wetland</td>
+<td>...</td>
+<td>categorical</td>
+<td>0.30, 0.40, ..., 0.10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sc%C3%A9narios">Scénarios</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Description des scénarios que l'on veut explorer avec justifications et références éventuelles.</p>
+<p>Un scénario est défini par l'attribution de valeurs à un sous-ensemble X des paramètres et variables énumérées dans la section Initialisation.</p>
+<h3 id="d%C3%A9tails-par-sc%C3%A9nario">Détails par Scénario</h3>
+<h4 id="sc%C3%A9nario--sustainabilitytransition">Scénario : sustainability_transition</h4>
+<p><strong>Description</strong> : Pathway towards sustainable agroecology</p>
+<p><strong>Base</strong> : IPCC RCP2.6 + EU Green Deal</p>
+<p><strong>Statut de validation</strong> : plausible</p>
+<p><strong>Paramètres :</strong></p>
+<ul>
+<li><code>climate_change_scenario</code> = <code>RCP2.6</code></li>
+<li><code>policy_intervention</code> = <code>regulation</code></li>
+</ul>
+<p><strong>Variables d'état initiales :</strong></p>
+<ul>
+<li><code>initial_investment</code> = <code>20000</code></li>
+</ul>
+<h4 id="sc%C3%A9nario--businessasusual">Scénario : business_as_usual</h4>
+<p><strong>Description</strong> : Current trends continuation</p>
+<p><strong>Base</strong> : None</p>
+<p><strong>Statut de validation</strong> : calibrated</p>
+<p><strong>Paramètres :</strong></p>
+<ul>
+<li><code>climate_change_scenario</code> = <code>RCP4.5</code></li>
+<li><code>policy_intervention</code> = <code>baseline</code></li>
+</ul>
+<p><strong>Variables d'état initiales :</strong></p>
+<ul>
+<li><code>initial_investment</code> = <code>10000</code></li>
+</ul>
+<h2 id="r%C3%A8gles-dinitialisation">Règles d'Initialisation</h2>
+<h3 id="documentation">Documentation</h3>
+<p>Description des règles et méthodes utilisées pour initialiser les entités du modèle.</p>
+<p>Les règles d'initialisation définissent comment les valeurs initiales sont attribuées aux différentes entités et variables du modèle, incluant les distributions statistiques, les méthodes de calcul et les hypothèses sous-jacentes.</p>
+<h3 id="liste-des-r%C3%A8gles-dinitialisation">Liste des Règles d'Initialisation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Entité</strong></th>
+<th><strong>Règle</strong></th>
+<th><strong>Implémentation</strong></th>
+<th><strong>Hypothèses</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HouseholdAgent</strong></td>
+<td><code>wealth ~ lognormal(10.82, 0.8)</code></td>
+<td><code>numpy.random.lognormal(10.82, 0.8, n_agents)</code></td>
+<td><code>Wealth distribution follows national statistics</code></td>
+</tr>
+<tr>
+<td><strong>ParcelEntity</strong></td>
+<td><code>land_use = categorical([0.3, 0.4, 0.2, 0.1])</code></td>
+<td><code>random.choice(['forest', 'agriculture', 'urban', 'wetland'], p=[0.3, 0.4, 0.2, 0.1])</code></td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d%C3%A9tails-par-r%C3%A8gle">Détails par Règle</h3>
+<h4 id="r%C3%A8gle-1--householdagent">Règle 1 : HouseholdAgent</h4>
+<p><strong>Règle mathématique</strong> :</p>
+<pre class="hljs"><code><div>wealth ~ lognormal(10.82, 0.8)
+</div></code></pre>
+<p><strong>Implémentation code</strong> :</p>
+<pre class="hljs"><code><div>numpy.random.lognormal(<span class="hljs-number">10.82</span>, <span class="hljs-number">0.8</span>, n_agents)
+</div></code></pre>
+<p><strong>Hypothèses et justifications</strong> :
+Wealth distribution follows national statistics</p>
+<h4 id="r%C3%A8gle-2--parcelentity">Règle 2 : ParcelEntity</h4>
+<p><strong>Règle mathématique</strong> :</p>
+<pre class="hljs"><code><div>land_use = categorical([0.3, 0.4, 0.2, 0.1])
+</div></code></pre>
+<p><strong>Implémentation code</strong> :</p>
+<pre class="hljs"><code><div>random.choice([<span class="hljs-string">'forest'</span>, <span class="hljs-string">'agriculture'</span>, <span class="hljs-string">'urban'</span>, <span class="hljs-string">'wetland'</span>], p=[<span class="hljs-number">0.3</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.1</span>])
+</div></code></pre>
+<p><strong>Hypothèses</strong> : <em>Aucune hypothèse spécifiée</em></p>
+<h1 id="mode-demploi">Mode d'emploi</h1>
+<h2 id="lancement-de-la-simulation">Lancement de la simulation</h2>
+<h3 id="configuration-requise">Configuration requise</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Système d'exploitation</strong></td>
+<td>Windows 10/11, Linux Ubuntu 20.04+, macOS 12+</td>
+</tr>
+<tr>
+<td><strong>Mémoire RAM</strong></td>
+<td>16GB recommandés (8GB minimum)</td>
+</tr>
+<tr>
+<td><strong>Espace disque</strong></td>
+<td>2GB libre (données spatiales incluses)</td>
+</tr>
+<tr>
+<td><strong>Dépendances</strong></td>
+<td>GAMA Platform 1.9.1+, Java 17+, GDAL 3.4+ (pour données géospatiales), Python 3.10+ (pour analyse post-simulation)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichiers-n%C3%A9cessaires">Fichiers nécessaires</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Fichier</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Exemple</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main_model.gaml</code></td>
+<td>Modèle principal GAMA contenant les espèces et expériences</td>
+<td>GAML</td>
+<td><code>models/pastoral_abm/main_model.gaml</code></td>
+</tr>
+<tr>
+<td><code>config_parameters.xml</code></td>
+<td>Fichier de paramétrage de la simulation</td>
+<td>XML</td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>land_cover.tiff</code></td>
+<td>Carte d'occupation du sol (classification FAO LCCS)</td>
+<td>GeoTIFF</td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>herd_data.csv</code></td>
+<td>Données initiales des troupeaux par ménage</td>
+<td>CSV UTF-8</td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="proc%C3%A9dure-de-lancement">Procédure de lancement</h3>
+<p><strong>Étape 1</strong> : Lancement en mode headless (sans interface)</p>
+<pre class="hljs"><code><div>gama-headless.exe main_model.gaml config_parameters.xml
+</div></code></pre>
+<p><strong>Options disponibles</strong> :</p>
+<ul>
+<li>--experiment main_experiment : exécute l'expérience principale</li>
+<li>--output results/ : spécifie le dossier de sortie</li>
+<li>--params param1=value1 param2=value2 : paramètres en ligne de commande</li>
+</ul>
+<p><strong>Étape 2</strong> : Lancement avec interface graphique GAMA</p>
+<pre class="hljs"><code><div>gama.exe main_model.gaml
+</div></code></pre>
+<p><strong>Prérequis</strong> : Environnement graphique disponible</p>
+<p><strong>Étape 3</strong> : Lancement batch de multiples scénarios</p>
+<pre class="hljs"><code><div>python run_batch.py --scenarios all --replicates 10
+</div></code></pre>
+<p><strong>Prérequis</strong> : Script Python d'orchestration installé</p>
+<h2 id="les-entr%C3%A9es">Les entrées</h2>
+<h3 id="interface-utilisateur">Interface utilisateur</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>GAMA Modeling Environment</td>
+</tr>
+<tr>
+<td><strong>URL</strong></td>
+<td><code>https://gama-platform.org</code></td>
+</tr>
+<tr>
+<td><strong>Fonctionnalités</strong></td>
+<td>Exploration visuelle des scénarios climatiques (X), Modification interactive des paramètres (Z) : taux de reproduction, règles de mobilité, Visualisation temps réel de la dynamique pastorale, Inspection des agents (troupeaux, ménages, ressources)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichiers-dentr%C3%A9e">Fichiers d'entrée</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Détails</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parametres_globaux</td>
+<td>Paramètres globaux du modèle socio-écologique</td>
+<td>XML</td>
+<td>Champs obligatoires: simulation_duration: 3650 (10 ans), time_step: 1 (jour), climate_scenario: RCP4.5</td>
+</tr>
+<tr>
+<td>donnees_spatiales</td>
+<td><em>Information à compléter</em></td>
+<td>GeoTIFF/Shapefile</td>
+<td>Système: WGS84/UTM</td>
+</tr>
+<tr>
+<td>donnees_socio_economiques</td>
+<td>Données des ménages et troupeaux</td>
+<td>CSV/JSON</td>
+<td>Aucun</td>
+</tr>
+<tr>
+<td>donnees_climatiques</td>
+<td>Données climatiques historiques et projections</td>
+<td>NetCDF</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<h2 id="les-sorties">Les sorties</h2>
+<h3 id="visualisation">Visualisation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Outils</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cartes_dynamiques</td>
+<td>Cartographie dynamique de la mobilité pastorale et état des ressources</td>
+<td>HTML interactif</td>
+<td>GAMA GIS + Leaflet.js</td>
+</tr>
+<tr>
+<td>courbes_evolution</td>
+<td>Graphiques temporels des indicateurs clés</td>
+<td>SVG/PDF interactif</td>
+<td>GAMA Charts + Plotly</td>
+</tr>
+<tr>
+<td>reseaux_sociaux</td>
+<td>Visualisation des réseaux d'entraide et partage de ressources</td>
+<td>GEXF/JSON</td>
+<td>Gephy/Cytoscape</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichiers-de-sortie">Fichiers de sortie</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Format</strong></th>
+<th><strong>Contenu</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resultats_bruts</td>
+<td>Données brutes pour analyse statistique</td>
+<td>CSV</td>
+<td>Colonnes: step: Pas de temps, household_id: Identifiant ménage, location_x, location_y: Coordonnées UTM, livestock_count: Effectif bétail (TLU), income: Revenu journalier, biomass_available: Biomasse disponible locale</td>
+</tr>
+<tr>
+<td>metrics_agregees</td>
+<td>Indicateurs agrégés par scénario</td>
+<td>JSON</td>
+<td>Données structurées</td>
+</tr>
+<tr>
+<td>rapport_synthese</td>
+<td>Rapport automatique avec graphiques et analyses</td>
+<td>PDF/HTML</td>
+<td>Sections: résumé_exécutif, performance_écologique, résilience_sociale, recommandations_gestions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-traitement">Post-traitement</h3>
+<p><strong>Outils recommandés</strong> :</p>
+<ul>
+<li>R Studio (analyse statistique)</li>
+<li>Jupyter Notebook (analyse exploratoire)</li>
+<li>QGIS (analyse spatiale)</li>
+<li>Gephi (analyse de réseaux)</li>
+</ul>
+<p><strong>Scripts d'exemple</strong> : <code>scripts/analysis/</code></p>
+
+</body>
+</html>

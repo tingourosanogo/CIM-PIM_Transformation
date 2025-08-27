@@ -105,7 +105,7 @@ class IndicatorsSection(BaseSection):
 
     def _generate_parameters(self, parameters: List[Dict]) -> str:
      
-        headers = ["Paramètres", "Entité", "Description", "Unité"]
+        headers = ["Paramètres", "Entité", "Description", "Unité", "Valeur"]
     
         # En-tête du tableau
         header_row = f"| {' | '.join(f'**{h}**' for h in headers)} |"
@@ -119,6 +119,7 @@ class IndicatorsSection(BaseSection):
                 f"{par.get('entity', '')} | "
                 f"{par.get('definition', '')} |"
                 f"{par.get('unit', '')} |"
+                f"{par.get('value', '')} |"
             )
     
         # Si pas de données, ajouter une ligne vide

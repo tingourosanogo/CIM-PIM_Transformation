@@ -4,31 +4,28 @@ import json
 from pathlib import Path
 from typing import Dict, List
 
-def parse_nested(text: str, field_type) -> list:
-    """Parse les champs imbriqués style 'name:unit' ou 'name:value:unit'"""
-    # return [item.split(':') for item in text.split('|')] if text else []
-    """Parse les champs complexes pour l'initialisation avec gestion d'erreurs"""
-    if not text or text.strip() == '':
+def parse_nested(text: str, expected_parts: int) -> list:
+    """Parse les champs imbriqués style 'name:unit' ou 'name:value:unit' avec gestion d'erreurs"""
+    if not text or not text.strip():
         return []
     
-    try:
-        if field_type == 'key_value':
-            # Format: "key1:value1|key2:value2"
-            return [item.split(':')
-                   for item in text.split('|') if ':' in item]
-        
-        elif field_type == 'distribution':
-            # Format: "mean:10.82|sigma:0.8"
-            return {item.split(':')[0]: float(item.split(':')[1]) 
-                   for item in text.split('|') if ':' in item}
-        
-        else:
-            # Format par défaut: "val1;val2;val3"
-            return [item.strip() for item in text.split(';') if item.strip()]
+    result = []
+    items = text.split('|')
+    
+    for item in items:
+        if not item.strip():
+            continue
             
-    except Exception as e:
-        print(f"Warning: Error parsing '{text}' as {field_type}: {str(e)}")
-        return []    
+        parts = item.split(':')
+        
+        # Ajouter des valeurs par défaut pour les parties manquantes
+        while len(parts) < expected_parts:
+            parts.append('')  # Valeur vide pour les champs manquants
+        
+        # Prendre seulement le nombre de parties attendu
+        result.append(parts[:expected_parts])
+    
+    return result
 
 
 """
@@ -43,8 +40,30 @@ def load_indicator_csv(csv_file_path: str, delimitor: str):
     with open(csv_file_path, mode='r', newline='', encoding='utf-8-sig') as csvfile:
         csv_reader = list(csv.DictReader(csvfile, delimiter=delimitor))
         for row in csv_reader:
-            row['variables'] = [{'name':v[0], 'entity':v[1], 'definition':v[2], 'unit':v[3]} for v in parse_nested(row['variables'], 'key_value')]
-            row['parameters'] = [{'name':p[0], 'entity':p[1], 'definition':p[2], 'unit':p[3]} for p in parse_nested(row['parameters'], 'key_value')]
+                # Parser les variables (4 parties attendues: name, entity, definition, unit)
+                if 'variables' in row:
+                    parsed_vars = parse_nested(row['variables'], 4)
+                    row['variables'] = [{
+                        'name': v[0] if len(v) > 0 else '',
+                        'entity': v[1] if len(v) > 1 else '',
+                        'definition': v[2] if len(v) > 2 else '',
+                        'unit': v[3] if len(v) > 3 else ''
+                    } for v in parsed_vars]
+                else:
+                    row['variables'] = []
+                
+                # Parser les paramètres (5 parties attendues: name, entity, definition, unit, value)
+                if 'parameters' in row:
+                    parsed_params = parse_nested(row['parameters'], 5)
+                    row['parameters'] = [{
+                        'name': p[0] if len(p) > 0 else '',
+                        'entity': p[1] if len(p) > 1 else '',
+                        'definition': p[2] if len(p) > 2 else '',
+                        'unit': p[3] if len(p) > 3 else '',
+                        'value': p[4] if len(p) > 4 else ''
+                    } for p in parsed_params]
+                else:
+                    row['parameters'] = []
     return csv_reader
 
 

@@ -3,10 +3,12 @@
 import logging
 import json
 from pathlib import Path
+from src.sections.introduction import IntroductionSection
 from src.sections.structure import StructureSection
 from src.sections.indicators import IndicatorsSection
 from src.sections.initialization import InitializationSection
 from src.sections.userManual import UserManualSection
+from src.loader.introduction_loader import IntroductionLoader
 from src.loader.indicator_loader import IndicatorLoader
 from src.loader.initialization_loader import InitializationLoader
 from src.loader.userManual_loader import UserManual_Loader
@@ -48,12 +50,16 @@ def main():
         logger.info("Début de la génération...")
         
         # 1. Vérification des fichiers d'entrée
+        IntroductionData_path = Path(config['introduction_path'])
         StructureData_path = Path(config['xmi_path'])
         IndicatorsData_path = Path(config['indicators_path'])
         InitializationData_path = Path(config['initialization_path'])
         UserManualData_path = Path(config['userManual_path'])
         
-       
+        if not IntroductionData_path.exists():
+            raise FileNotFoundError(f"Fichier Introduction introuvable: {IntroductionData_path}")
+        logger.info(f"Fichier d'entrée trouvé: {IntroductionData_path}") # Les messages affichés à virer après le travail
+
         if not StructureData_path.exists():
             raise FileNotFoundError(f"Fichier Structure introuvable: {StructureData_path}")
         logger.info(f"Fichier d'entrée trouvé: {StructureData_path}") # Les messages affichés à virer après le travail 
@@ -71,6 +77,17 @@ def main():
         logger.info(f"Fichier d'entrée trouvé: {UserManualData_path}") # Les messages affichés à virer après le travail 
 
         # 2. Parsing des données
+        
+        ## Section Introduction (YAML)
+        introductionJson_path = Path(config['introductionJson_path'])
+        introduction_format = config['introduction_format']
+        introduction_loader = IntroductionLoader()
+        introduction_data = introduction_loader.load_introduction_data(input_path=IntroductionData_path, output_path=introductionJson_path, input_format=introduction_format)
+        
+        with open(introductionJson_path, mode='r', encoding='utf-8') as f:
+            introduction_data = json.load(f)
+
+        
         ## Section Structure (XMI)
         xmi_parser = UMLParser(StructureData_path)
         builder = DocumentationBuilder(config)
@@ -113,11 +130,13 @@ def main():
         logger.info("Parsing XMI réussi") # Les messages affichés à virer après le travail 
 
         # 3. Génération des sections
+        introductionSect = IntroductionSection(introduction_data).generate()
         structureSect = builder.build(xmi_parser)
         indicatorsSect = IndicatorsSection(indicators_data).generate()
         initializationSect = InitializationSection(initialization_data).generate()
         userManualSect = UserManualSection(userManual_data).generate()
         sections = [
+            introductionSect,
             structureSect,
             indicatorsSect,
             initializationSect,

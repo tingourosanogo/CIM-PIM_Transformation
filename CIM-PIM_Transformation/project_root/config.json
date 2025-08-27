@@ -1,15 +1,24 @@
 {
     "title":"Documentation Technique",
     "authors":[{"name": "Équipe", "affiliation": "Société"}],
+
+    "introduction_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/introduction.yml",
+    "introductionJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/introduction.json",
+    "introduction_format": "yaml",
+    
     "xmi_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/modele_conceptuel.xmi",
+    
     "indicators_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.yml",
     "indicatorsJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/indicators.json",
     "indicators_format": {"format": "yaml", "delimitor": ";"},
+    
     "initialization_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization_data",
     "initializationJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/initialization.json",
     "initialization_format": {"format": "csv", "delimitor": ","},
+    
     "userManual_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/user_manual.yml",
     "userManualJson_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/input/user_manual.json",
     "userManual_format": "yaml",
+
     "output_path": "C:/Users/tingo/source/repos/tingourosanogo/CIM-PIM_Transformation/CIM-PIM_Transformation/project_root/src/output/docs2.md"
 }

@@ -1,4 +1,4 @@
-# initialization_loader.py
+# indicator_loader.py
 import json
 from pathlib import Path
 from typing import Dict

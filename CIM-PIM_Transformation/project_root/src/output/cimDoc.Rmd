@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Introduction
 
 ## Principe et définitions
@@ -999,9 +1004,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| facteur_saison | Système | Coefficient saisonnier d'ajustement |coefficient |1.2 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| facteur_saison | Système | Coefficient saisonnier d'ajustement |coefficient |
 
 ### Indicateur PA.02.01 : Taux de rotation des pâturages (rotations/an)
 
@@ -1034,9 +1039,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| duree_min_sejour | Parcelle | Durée minimale entre deux rotations |jours |21 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| duree_min_sejour | Parcelle | Durée minimale entre deux rotations |jours |
 
 ### Indicateur PA.03.01 : Taux de charge soutenable (UBT/ha/an)
 
@@ -1069,9 +1074,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| facteur_resilience | Ecosystème | Coefficient de résilience des parcours |coefficient |0.85 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| facteur_resilience | Ecosystème | Coefficient de résilience des parcours |coefficient |
 
 ### Indicateur PA.04.01 : Dépendance aux aliments externes (%)
 
@@ -1104,9 +1109,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| prix_moyen_aliment | Marché | Coût moyen des aliments achetés |€/kg MS |0.35 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| prix_moyen_aliment | Marché | Coût moyen des aliments achetés |€/kg MS |
 
 ### Indicateur PA.05.01 : Productivité laitière spécifique (L/femelle/an)
 
@@ -1139,9 +1144,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| duree_lactation | Troupeau | Période standard de lactation |jours |305 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| duree_lactation | Troupeau | Période standard de lactation |jours |
 
 ### Indicateur PA.06.01 : Indice de mobilité pastorale (km/jour)
 
@@ -1174,9 +1179,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| facteur_saison | Climat | Coefficient d'ajustement saisonnier |sans dimension |1.2 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| facteur_saison | Climat | Coefficient d'ajustement saisonnier |sans dimension |
 
 ### Indicateur PA.07.01 : Taux de renouvellement du troupeau (%/an)
 
@@ -1209,9 +1214,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| taux_optimal | Troupeau | Valeur cible pour une gestion durable |% |20 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| taux_optimal | Troupeau | Valeur cible pour une gestion durable |% |
 
 ### Indicateur PA.08.01 : Pression pastorale équivalente (UBT/ha/indice)
 
@@ -1244,9 +1249,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| capacite_charge | Parcours | Charge animale soutenable à long terme |UBT/ha |0.5 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| capacite_charge | Parcours | Charge animale soutenable à long terme |UBT/ha |
 ## Agroécologie
 
 
@@ -1280,9 +1285,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| seuil_diversite | Système | Valeur cible pour une diversité optimale |indice |1.8 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| seuil_diversite | Système | Valeur cible pour une diversité optimale |indice |
 
 ### Indicateur AE.02.01 : Taux de couverture végétale (%)
 
@@ -1315,9 +1320,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| seuil_optimal | Système | Couverture végétale cible |% |70 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| seuil_optimal | Système | Couverture végétale cible |% |
 
 ### Indicateur AE.03.01 : Indice de connectivité biologique (ha.pts)
 
@@ -1350,9 +1355,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| seuil_connectivite | Paysage | Seuil minimum pour une connectivité fonctionnelle |sans dimension |0.75 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| seuil_connectivite | Paysage | Seuil minimum pour une connectivité fonctionnelle |sans dimension |
 
 ### Indicateur AE.04.01 : Taux de matière organique du sol (%)
 
@@ -1385,9 +1390,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| profondeur_prelevement | Sol | Profondeur standard d'échantillonnage |cm |20 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| profondeur_prelevement | Sol | Profondeur standard d'échantillonnage |cm |
 
 ### Indicateur AE.05.01 : Efficience d'utilisation de l'eau (kg/m³)
 
@@ -1420,9 +1425,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| coefficient_culture | Culture | Coefficient spécifique à l'espèce cultivée |sans dimension |0.85 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| coefficient_culture | Culture | Coefficient spécifique à l'espèce cultivée |sans dimension |
 
 ### Indicateur AE.06.01 : Indice d'autonomie en intrants (%)
 
@@ -1455,9 +1460,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| seuil_autonomie | Système | Niveau minimal pour une exploitation durable |% |60 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| seuil_autonomie | Système | Niveau minimal pour une exploitation durable |% |
 
 ### Indicateur AE.07.01 : Indice de spécialisation parcellaire (fonctions/parcelle)
 
@@ -1490,9 +1495,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| poids_fonction | Système | Coefficient d'importance relative des fonctions |sans dimension |1.0 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| poids_fonction | Système | Coefficient d'importance relative des fonctions |sans dimension |
 
 ### Indicateur AE.07.02 : Diversité culturale (espèces/parcelle)
 
@@ -1523,9 +1528,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| surface_observée | Espace | Surface échantillonnée |ha |1.0 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| surface_observée | Espace | Surface échantillonnée |ha |
 
 ### Indicateur AE.07.03 : Diversité culturale (espèces/parcelle)
 
@@ -1556,9 +1561,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| poids_espece | Système | Coefficient de valeur écologique |sans dimension |1.2 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| poids_espece | Système | Coefficient de valeur écologique |sans dimension |
 ## Environnemental
 
 
@@ -1593,9 +1598,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| a | Climat | Facteur d'amortissement du passé |sans |0.1 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| a | Climat | Facteur d'amortissement du passé |sans |
 ## Démographique
 
 
@@ -1629,9 +1634,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| taux-croissance | ActeurIndividuel | Taux de croissance démographique du foyer |% |2.6 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| taux-croissance | ActeurIndividuel | Taux de croissance démographique du foyer |% |
 ## Économique
 
 
@@ -1665,9 +1670,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| surface_totale | Espace | Surface cultivée totale |ha |1.0 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| surface_totale | Espace | Surface cultivée totale |ha |
 ## Social
 
 
@@ -1701,9 +1706,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| ... | ... | ... | ... | ... |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| ... | ... | ... | ... |
 ## Climat
 
 
@@ -1737,9 +1742,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| surface | Espace | Surface agricole utile |ha |1.0 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| surface | Espace | Surface agricole utile |ha |
 
 ### Indicateur CL.03.02 : Indice de résilience climatique (%)
 
@@ -1771,9 +1776,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| ... | ... | ... | ... | ... |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| ... | ... | ... | ... |
 ## Biodiversité
 
 
@@ -1806,9 +1811,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| poids_ecologique | Système | Valeur écologique de l'espèce |coefficient |0.75 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| poids_ecologique | Système | Valeur écologique de l'espèce |coefficient |
 
 ### Indicateur BD.04.02 : Indice de biodiversité (espèces/ha)
 
@@ -1839,9 +1844,9 @@ L’indicateur dépend des variables suivantes :
 
 Et dépend des paramètres suivants 
 
- | **Paramètres** | **Entité** | **Description** | **Unité** | **Valeur** |
-| --- | --- | --- | --- | --- |
-| surface_reference | Système | Surface de référence |ha |10.0 |
+ | **Paramètres** | **Entité** | **Description** | **Unité** |
+| --- | --- | --- | --- |
+| surface_reference | Système | Surface de référence |ha |
 
 # Initialisation
 
