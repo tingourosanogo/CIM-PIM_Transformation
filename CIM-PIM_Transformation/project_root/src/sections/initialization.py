@@ -34,7 +34,7 @@ class InitializationSection(BaseSection):
         try:
             """Charger les données de JSON"""
             #_metadata = self.data.get('metadata', [])
-            _initialisation = self.data.get('initialization', {})
+            _initialisation = self.data.get('global', {})
             _input_data     = self.data.get('input_data', {})
             _entities = self.data.get('entities', {})
             _parameters = self.data.get('parameters', {})

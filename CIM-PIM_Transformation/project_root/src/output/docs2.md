@@ -1848,10 +1848,23 @@ Et dépend des paramètres suivants
 ## Initialisation
 
 ### Portée Temporelle
-*Configuration temporelle à compléter.*
+Configuration de la dimension temporelle de la simulation :
 
-### Configuration Spatiale  
-*Configuration spatiale à compléter.*
+| **Paramètre** | **Valeur** | **Description** |
+| --- | --- | --- |
+| Date de début | `2020-01-01` | Date initiale de la simulation |
+| Date de fin | `2030-12-31` | Date finale de la simulation |
+| Pas de temps | `1 day` | Incrément temporel de simulation |
+| Période de chauffe | `365 days` | Période d'initialisation avant collecte des données |
+
+### Configuration Spatiale
+Configuration de la dimension spatiale de la simulation :
+
+| **Paramètre** | **Valeur** | **Description** |
+| --- | --- | --- |
+| Extension | `[min_x, min_y, max_x, max_y]` | Bounding box de la zone d'étude |
+| Projection | `EPSG:4326` | Système de coordonnées de référence |
+| Résolution | `100 m` | Résolution spatiale des données |
 
 ## Données d'Entrée
 

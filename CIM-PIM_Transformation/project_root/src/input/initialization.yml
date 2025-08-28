@@ -25,7 +25,7 @@ metadata:
       doi: "10.1007/3-540-64582-9_76"
 
 ## ODD Section 3.3: Initialization
-initialization:
+global:
   temporal_scope:
     start_date: "2020-01-01"
     end_date: "2030-12-31"
